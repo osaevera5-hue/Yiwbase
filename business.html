@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Businesses | Yiwbase</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span>YIW</span>BASE
+        </a>
+
+        <nav id="mainNav">
+
+            <a href="index.html">Home</a>
+
+            <a href="business.html" class="active">
+                Businesses
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<section class="page-header">
+
+    <div>
+
+        <span>YIWBASE DIRECTORY</span>
+
+        <h1 id="categoryTitle">
+            Businesses
+        </h1>
+
+        <p>
+            Discover businesses and services around Ghana.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORY SUBMENU -->
+
+<section class="business-directory">
+
+    <div class="container">
+
+        <div class="directory-layout">
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="category-sidebar">
+
+                <h3>
+                    Categories
+                </h3>
+
+
+                <button onclick="loadCategory('food')">
+                    <i class="fa-solid fa-utensils"></i>
+                    Food & Restaurants
+                </button>
+
+
+                <button onclick="loadCategory('fashion')">
+                    <i class="fa-solid fa-shirt"></i>
+                    Fashion & Beauty
+                </button>
+
+
+                <button onclick="loadCategory('hotels')">
+                    <i class="fa-solid fa-hotel"></i>
+                    Hotels & Accommodation
+                </button>
+
+
+                <button onclick="loadCategory('shops')">
+                    <i class="fa-solid fa-store"></i>
+                    Shops & Retail
+                </button>
+
+
+                <button onclick="loadCategory('health')">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    Health & Pharmacy
+                </button>
+
+
+                <button onclick="loadCategory('education')">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Education
+                </button>
+
+
+                <button onclick="loadCategory('construction')">
+                    <i class="fa-solid fa-building"></i>
+                    Construction
+                </button>
+
+
+                <button onclick="loadCategory('transport')">
+                    <i class="fa-solid fa-car"></i>
+                    Transport
+                </button>
+
+
+                <button onclick="loadCategory('technology')">
+                    <i class="fa-solid fa-laptop"></i>
+                    Technology
+                </button>
+
+
+                <button onclick="loadCategory('events')">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Events & Entertainment
+                </button>
+
+            </aside>
+
+
+            <!-- BUSINESSES -->
+
+            <main class="directory-content">
+
+
+                <div class="directory-top">
+
+                    <div>
+
+                        <span>DIRECTORY</span>
+
+                        <h2 id="subCategoryTitle">
+                            Food & Restaurants
+                        </h2>
+
+                    </div>
+
+
+                    <div class="directory-search">
+
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="directorySearch"
+                            placeholder="Search this category..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMENU -->
+
+                <div class="subcategory-menu"
+                     id="subcategoryMenu">
+
+                </div>
+
+
+                <!-- BUSINESS RESULTS -->
+
+                <div class="business-grid"
+                     id="businessResults">
+
+                </div>
+
+
+            </main>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Ghana.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

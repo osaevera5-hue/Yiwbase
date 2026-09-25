@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>News | Yiwbase</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+<style>
+  
+/* =====================================================
+   YIWBASE NEWS PAGE
+===================================================== */
+
+.news-page-hero {
+
+    background:
+        linear-gradient(
+            rgba(7, 26, 25, .92),
+            rgba(7, 26, 25, .92)
+        );
+
+    padding: 100px 0;
+
+    color: white;
+
+    text-align: center;
+}
+
+.news-hero-content {
+
+    max-width: 750px;
+
+    margin: auto;
+}
+
+.news-hero-content span {
+
+    color: var(--gold-light);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    font-weight: 700;
+}
+
+.news-hero-content h1 {
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: clamp(38px, 5vw, 58px);
+
+    line-height: 1.15;
+
+    margin: 12px 0;
+}
+
+.news-hero-content p {
+
+    color: #262b2a;
+
+    max-width: 600px;
+
+    margin: auto;
+
+    font-size: 15px;
+}
+
+
+/* NEWS TOOLS */
+
+.news-tools {
+
+    border-bottom: 1px solid var(--border);
+
+    background: white;
+
+    padding: 25px 0;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+}
+
+.news-tools-inner {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+.news-search {
+
+    width: 300px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 13px;
+}
+
+.news-search i {
+
+    color: var(--green);
+}
+
+.news-search input {
+
+    border: none;
+
+    outline: none;
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 12px;
+}
+
+.news-categories {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.news-filter {
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.news-filter:hover,
+.news-filter.active {
+
+    background: var(--green);
+
+    color: white;
+
+    border-color: var(--green);
+}
+
+
+/* NEWS SECTIONS */
+
+.featured-news,
+.latest-news {
+
+    padding: 80px 0;
+}
+
+.latest-news {
+
+    background: var(--cream);
+}
+
+.news-section-title {
+
+    margin-bottom: 30px;
+}
+
+.news-section-title span {
+
+    color: var(--green);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.news-section-title h2 {
+
+    color: var(--navy);
+
+    font-family: 'Poppins';
+
+    font-size: 30px;
+
+    margin-top: 5px;
+}
+
+
+/* FEATURED */
+
+.featured-news-card {
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 1fr;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.featured-news-image {
+
+    height: 390px;
+
+    position: relative;
+}
+
+.featured-news-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.news-label {
+
+    position: absolute;
+
+    left: 18px;
+
+    bottom: 18px;
+
+    background: var(--green);
+
+    color: white;
+
+    padding: 6px 11px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    border-radius: 3px;
+}
+
+.featured-news-content {
+
+    padding: 50px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.featured-news-content small,
+.news-post-content small {
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.featured-news-content h2 {
+
+    font-family: 'Poppins';
+
+    color: var(--navy);
+
+    font-size: 31px;
+
+    line-height: 1.25;
+
+    margin: 12px 0;
+}
+
+.featured-news-content p {
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.read-more {
+
+    color: var(--green);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-top: 22px;
+}
+
+
+/* NEWS GRID */
+
+.news-page-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.news-post {
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    transition: .3s;
+}
+
+.news-post:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.news-post-image {
+
+    height: 220px;
+
+    position: relative;
+}
+
+.news-post-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.news-post-content {
+
+    padding: 23px;
+}
+
+.news-post-content h3 {
+
+    font-family: 'Poppins';
+
+    color: var(--navy);
+
+    font-size: 18px;
+
+    line-height: 1.35;
+
+    margin: 8px 0;
+}
+
+.news-post-content p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.news-post-content a {
+
+    display: inline-block;
+
+    margin-top: 16px;
+
+    color: var(--green);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* NO RESULTS */
+
+.news-no-results {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    color: var(--muted);
+}
+
+.news-no-results i {
+
+    color: var(--green);
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.news-no-results h3 {
+
+    color: var(--navy);
+
+    font-family: 'Poppins';
+
+    margin-bottom: 5px;
+}
+
+
+/* NEWSLETTER */
+
+.newsletter-section {
+
+    padding: 80px 0;
+}
+
+.newsletter-box {
+
+    background: var(--navy);
+
+    color: white;
+
+    border-radius: 10px;
+
+    padding: 50px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 40px;
+}
+
+.newsletter-box span {
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: 700;
+}
+
+.newsletter-box h2 {
+
+    font-family: 'Poppins';
+
+    font-size: 32px;
+
+    margin: 5px 0;
+}
+
+.newsletter-box p {
+
+    color: #b7c5c1;
+
+    font-size: 13px;
+}
+
+.newsletter-form {
+
+    display: flex;
+
+    background: white;
+
+    padding: 5px;
+
+    border-radius: 5px;
+
+    min-width: 390px;
+}
+
+.newsletter-form input {
+
+    border: none;
+
+    outline: none;
+
+    flex: 1;
+
+    padding: 12px;
+
+    font-size: 12px;
+}
+
+.newsletter-form button {
+
+    border: none;
+
+    background: var(--green);
+
+    color: white;
+
+    padding: 0 20px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+
+/* NEWS MOBILE */
+
+@media(max-width: 768px) {
+
+    .news-tools-inner {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .news-search {
+
+        width: 100%;
+    }
+
+    .news-categories {
+
+        justify-content: center;
+    }
+
+    .featured-news-card {
+
+        grid-template-columns: 1fr;
+    }
+
+    .featured-news-image {
+
+        height: 270px;
+    }
+
+    .featured-news-content {
+
+        padding: 30px;
+    }
+
+    .featured-news-content h2 {
+
+        font-size: 25px;
+    }
+
+    .news-page-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .newsletter-box {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 35px 25px;
+    }
+
+    .newsletter-form {
+
+        min-width: 0;
+
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 450px) {
+
+    .news-categories {
+
+        justify-content: flex-start;
+    }
+
+    .news-filter {
+
+        padding: 7px 10px;
+    }
+
+    .newsletter-form {
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .newsletter-form button {
+
+        padding: 12px;
+    }
+
+}
+</style>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span>YIW</span>BASE
+        </a>
+
+        <nav id="mainNav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="business.html">
+                Businesses
+            </a>
+
+            <a href="news.html" class="active">
+                News
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= NEWS HERO ================= -->
+
+<section class="news-page-hero">
+
+    <div class="container">
+
+        <div class="news-hero-content">
+
+            <!-- <span>
+                YIWBASE NEWS
+            </span> -->
+
+            <h1>
+                News, Stories & Updates
+            </h1>
+
+            <p>
+                Stay informed about businesses, communities,
+                events and what's happening across Ghana.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= NEWS SEARCH ================= -->
+
+<section class="news-tools">
+
+    <div class="container news-tools-inner">
+
+        <div class="news-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="newsSearch"
+                placeholder="Search news..."
+            >
+
+        </div>
+
+
+        <div class="news-categories">
+
+            <button class="news-filter active"
+                    data-category="all">
+                All
+            </button>
+
+            <button class="news-filter"
+                    data-category="business">
+                Business
+            </button>
+
+            <button class="news-filter"
+                    data-category="community">
+                Community
+            </button>
+
+            <button class="news-filter"
+                    data-category="events">
+                Events
+            </button>
+
+            <button class="news-filter"
+                    data-category="lifestyle">
+                Lifestyle
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURED NEWS ================= -->
+
+<section class="featured-news">
+
+    <div class="container">
+
+        <div class="news-section-title">
+
+            <div>
+
+                <span>
+                    FEATURED STORY
+                </span>
+
+                <h2>
+                    Latest from Yiwbase
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <article class="featured-news-card"
+                 data-category="business">
+
+            <div class="featured-news-image">
+
+                <img src="images/business.webp"
+                     alt="Featured Yiwbase News">
+
+                <span class="news-label">
+                    BUSINESS
+                </span>
+
+            </div>
+
+
+            <div class="featured-news-content">
+
+                <small>
+                    September 25, 2026
+                </small>
+
+                <h2>
+                    Yiwbase Expands Its Digital Business Directory
+                </h2>
+
+                <p>
+                    Yiwbase continues to connect people with
+                    businesses and services across Ghana,
+                    making it easier to discover local businesses
+                    in one place.
+                </p>
+
+                <a href="#" class="read-more">
+                    Read Full Story
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= LATEST NEWS ================= -->
+
+<section class="latest-news">
+
+    <div class="container">
+
+        <div class="news-section-title">
+
+            <div>
+
+                <span>
+                    LATEST NEWS
+                </span>
+
+                <h2>
+                    Recent Stories
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="news-page-grid">
+
+
+            <!-- NEWS 1 -->
+
+            <article class="news-post"
+                     data-category="community">
+
+                <div class="news-post-image">
+
+                    <img src="images/community.jpg"
+                         alt="Community News">
+
+                    <span class="news-label">
+                        COMMUNITY
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 24, 2026
+                    </small>
+
+                    <h3>
+                        New Businesses Join the Yiwbase Directory
+                    </h3>
+
+                    <p>
+                        More local businesses are becoming
+                        discoverable through the Yiwbase platform.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- NEWS 2 -->
+
+            <article class="news-post"
+                     data-category="business">
+
+                <div class="news-post-image">
+
+                    <img src="images/business.webp"
+                         alt="Business News">
+
+                    <span class="news-label">
+                        BUSINESS
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 22, 2026
+                    </small>
+
+                    <h3>
+                        Why Local Businesses Need a Digital Presence
+                    </h3>
+
+                    <p>
+                        Discover how being visible online can
+                        help businesses connect with new customers.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- NEWS 3 -->
+
+            <article class="news-post"
+                     data-category="events">
+
+                <div class="news-post-image">
+
+                    <img src="images/event.jpg"
+                         alt="Events News">
+
+                    <span class="news-label">
+                        EVENTS
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 20, 2026
+                    </small>
+
+                    <h3>
+                        Events Happening Across Our Communities
+                    </h3>
+
+                    <p>
+                        Find upcoming events, celebrations,
+                        festivals and entertainment near you.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- NEWS 4 -->
+
+            <article class="news-post"
+                     data-category="lifestyle">
+
+                <div class="news-post-image">
+
+                    <img src="images/lifenews.jpg"
+                         alt="Lifestyle News">
+
+                    <span class="news-label">
+                        LIFESTYLE
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 18, 2026
+                    </small>
+
+                    <h3>
+                        Places to Discover Around Akuapem
+                    </h3>
+
+                    <p>
+                        Explore interesting places, attractions
+                        and experiences around the Akuapem area.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- NEWS 5 -->
+
+            <article class="news-post"
+                     data-category="community">
+
+                <div class="news-post-image">
+
+                    <img src="images/community.jpg"
+                         alt="Community Story">
+
+                    <span class="news-label">
+                        COMMUNITY
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 16, 2026
+                    </small>
+
+                    <h3>
+                        Spotlight on Local Entrepreneurs
+                    </h3>
+
+                    <p>
+                        Meet entrepreneurs building businesses
+                        and creating opportunities in their communities.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- NEWS 6 -->
+
+            <article class="news-post"
+                     data-category="business">
+
+                <div class="news-post-image">
+
+                    <img src="images/business.webp"
+                         alt="Business Story">
+
+                    <span class="news-label">
+                        BUSINESS
+                    </span>
+
+                </div>
+
+                <div class="news-post-content">
+
+                    <small>
+                        September 14, 2026
+                    </small>
+
+                    <h3>
+                        Helping Customers Find Businesses Faster
+                    </h3>
+
+                    <p>
+                        Yiwbase brings businesses and customers
+                        together through a simple digital directory.
+                    </p>
+
+                    <a href="#">
+                        Read More
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div class="news-no-results"
+             id="newsNoResults">
+
+            <i class="fa-solid fa-newspaper"></i>
+
+            <h3>
+                No news found
+            </h3>
+
+            <p>
+                Try another search or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter-section">
+
+    <div class="container newsletter-box">
+
+        <div>
+
+            <span>
+                YIWBASE UPDATES
+            </span>
+
+            <h2>
+                Stay connected.
+            </h2>
+
+            <p>
+                Get the latest business and community
+                stories from Yiwbase.
+            </p>
+
+        </div>
+
+
+        <form class="newsletter-form"
+              onsubmit="return false;">
+
+            <input
+                type="email"
+                placeholder="Enter your email address"
+            >
+
+            <button>
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html"
+               class="logo footer-logo">
+
+                <span>YIW</span>BASE
+
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Ghana.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Directory
+            </h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels & Accommodation
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="business.html">
+                Businesses
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>
+                Contact
+            </h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Ghana
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+<script>
+
+/* ================= NEWS FILTER ================= */
+
+const newsFilters =
+    document.querySelectorAll(".news-filter");
+
+const newsPosts =
+    document.querySelectorAll(".news-post");
+
+const featuredNews =
+    document.querySelector(".featured-news-card");
+
+const newsSearch =
+    document.getElementById("newsSearch");
+
+const noResults =
+    document.getElementById("newsNoResults");
+
+
+let selectedCategory = "all";
+
+
+/* FILTER BUTTONS */
+
+newsFilters.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        newsFilters.forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+        this.classList.add("active");
+
+        selectedCategory =
+            this.dataset.category;
+
+        filterNews();
+
+    });
+
+});
+
+
+/* SEARCH */
+
+if (newsSearch) {
+
+    newsSearch.addEventListener(
+        "input",
+        function() {
+
+            filterNews();
+
+        }
+    );
+
+}
+
+
+/* FILTER FUNCTION */
+
+function filterNews() {
+
+    const search =
+        newsSearch.value
+        .toLowerCase()
+        .trim();
+
+    let visible = 0;
+
+
+    newsPosts.forEach(function(post) {
+
+        const category =
+            post.dataset.category;
+
+        const text =
+            post.innerText.toLowerCase();
+
+
+        const categoryMatch =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+
+        const searchMatch =
+            search === "" ||
+            text.includes(search);
+
+
+        if (categoryMatch && searchMatch) {
+
+            post.style.display = "";
+
+            visible++;
+
+        } else {
+
+            post.style.display = "none";
+
+        }
+
+    });
+
+
+    /* FEATURED STORY */
+
+    if (featuredNews) {
+
+        const featuredCategory =
+            featuredNews.dataset.category;
+
+
+        const featuredText =
+            featuredNews.innerText.toLowerCase();
+
+
+        const categoryMatch =
+            selectedCategory === "all" ||
+            featuredCategory === selectedCategory;
+
+
+        const searchMatch =
+            search === "" ||
+            featuredText.includes(search);
+
+
+        if (categoryMatch && searchMatch) {
+
+            featuredNews.style.display = "";
+
+        } else {
+
+            featuredNews.style.display = "none";
+
+        }
+
+    }
+
+
+    /* NO RESULTS */
+
+    if (noResults) {
+
+        if (visible === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+ 

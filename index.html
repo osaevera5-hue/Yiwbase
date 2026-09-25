@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yiwbase | Ghana Business Directory</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <span>YIW</span>BASE
+        </a>
+
+        <nav id="mainNav">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn">
+                    Businesses
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="business.html?category=food">
+                        <i class="fa-solid fa-utensils"></i>
+                        Food & Restaurants
+                    </a>
+
+                    <a href="business.html?category=fashion">
+                        <i class="fa-solid fa-shirt"></i>
+                        Fashion & Beauty
+                    </a>
+
+                    <a href="business.html?category=hotels">
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotels & Accommodation
+                    </a>
+
+                    <a href="business.html?category=shops">
+                        <i class="fa-solid fa-store"></i>
+                        Shops & Retail
+                    </a>
+
+                    <a href="business.html?category=health">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        Health & Pharmacy
+                    </a>
+
+                    <a href="business.html?category=education">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Education
+                    </a>
+
+                    <a href="business.html?category=construction">
+                        <i class="fa-solid fa-building"></i>
+                        Construction
+                    </a>
+
+                    <a href="business.html?category=transport">
+                        <i class="fa-solid fa-car"></i>
+                        Transport
+                    </a>
+
+                    <a href="business.html?category=technology">
+                        <i class="fa-solid fa-laptop"></i>
+                        Technology
+                    </a>
+
+                    <a href="business.html?category=events">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Events & Entertainment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+        <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-small">
+            GHANA'S DIGITAL DIRECTORY
+        </span>
+
+        <h1>
+            Discover Businesses.<br>
+            <span>Discover Ghana.</span>
+        </h1>
+
+        <p>
+            Find trusted businesses, services, people, places and events
+            around your community.
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="homeSearch"
+                placeholder="Search businesses, services or locations..."
+            >
+
+            <button onclick="searchBusinesses()">
+                Search
+            </button>
+
+        </div>
+
+        <div class="popular-searches">
+
+            <span>Popular:</span>
+
+            <button onclick="quickSearch('Restaurants')">
+                Restaurants
+            </button>
+
+            <button onclick="quickSearch('Hotels')">
+                Hotels
+            </button>
+
+            <button onclick="quickSearch('Fashion')">
+                Fashion
+            </button>
+
+            <button onclick="quickSearch('Events')">
+                Events
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="categories-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>EXPLORE</span>
+
+            <h2>
+                Browse Business Categories
+            </h2>
+
+            <p>
+                Find the businesses and services you need.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <!-- FOOD -->
+
+            <div class="category-card"
+                 onclick="openCategory('food')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+
+                <h3>Food & Restaurants</h3>
+
+                <p>
+                    Restaurants, chop bars, bakeries,
+                    catering and food vendors.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- FASHION -->
+
+            <div class="category-card"
+                 onclick="openCategory('fashion')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+
+                <h3>Fashion & Beauty</h3>
+
+                <p>
+                    Fashion designers, salons,
+                    barbers, makeup artists and boutiques.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- HOTELS -->
+
+            <div class="category-card"
+                 onclick="openCategory('hotels')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
+
+                <h3>Hotels & Accommodation</h3>
+
+                <p>
+                    Hotels, guest houses, apartments
+                    and short stays.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- SHOPS -->
+
+            <div class="category-card"
+                 onclick="openCategory('shops')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+
+                <h3>Shops & Retail</h3>
+
+                <p>
+                    Supermarkets, provisions,
+                    electronics and retail shops.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- HEALTH -->
+
+            <div class="category-card"
+                 onclick="openCategory('health')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <h3>Health & Pharmacy</h3>
+
+                <p>
+                    Pharmacies, hospitals, clinics,
+                    laboratories and health services.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- EDUCATION -->
+
+            <div class="category-card"
+                 onclick="openCategory('education')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h3>Education</h3>
+
+                <p>
+                    Schools, training centres,
+                    tutors and educational services.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- CONSTRUCTION -->
+
+            <div class="category-card"
+                 onclick="openCategory('construction')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <h3>Construction</h3>
+
+                <p>
+                    Contractors, architects,
+                    building materials and artisans.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- TRANSPORT -->
+
+            <div class="category-card"
+                 onclick="openCategory('transport')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+
+                <h3>Transport</h3>
+
+                <p>
+                    Car rentals, taxis, logistics,
+                    delivery and transportation.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- TECHNOLOGY -->
+
+            <div class="category-card"
+                 onclick="openCategory('technology')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-laptop"></i>
+                </div>
+
+                <h3>Technology</h3>
+
+                <p>
+                    Web designers, IT services,
+                    software and electronics.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+
+            <!-- EVENTS -->
+
+            <div class="category-card"
+                 onclick="openCategory('events')">
+
+                <div class="category-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <h3>Events & Entertainment</h3>
+
+                <p>
+                    Event planners, DJs, photographers,
+                    lounges and entertainment.
+                </p>
+
+                <span class="view-category">
+                    Explore
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURED ================= -->
+
+<section class="featured-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>DISCOVER</span>
+
+            <h2>
+                Featured Businesses
+            </h2>
+
+            <p>
+                Discover businesses listed on Yiwbase.
+            </p>
+
+        </div>
+
+
+        <div class="business-grid">
+
+
+            <div class="business-card">
+
+                <div class="business-image">
+                    <img src="images/restaurant.jpg" alt="Business">
+                    <span class="verified">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+                </div>
+
+                <div class="business-info">
+
+                    <small>FOOD & RESTAURANTS</small>
+
+                    <h3>Akro Golden Bakery</h3>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Akuapem
+                    </p>
+
+                    <a href="#">
+                        View Business
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="business-image">
+                    <img src="images/fashion.jpg" alt="Business">
+
+                    <span class="verified">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+                </div>
+
+                <div class="business-info">
+
+                    <small>FASHION & BEAUTY</small>
+
+                    <h3>Example Fashion House</h3>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Accra
+                    </p>
+
+                    <a href="#">
+                        View Business
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="business-image">
+                    <img src="images/guesshouse.jpg" alt="Business">
+
+                    <span class="verified">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </span>
+                </div>
+
+                <div class="business-info">
+
+                    <small>HOTELS</small>
+
+                    <h3>Example Guest House</h3>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Aburi
+                    </p>
+
+                    <a href="#">
+                        View Business
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-content">
+
+            <span>ABOUT YIWBASE</span>
+
+            <h2>
+                One place to discover
+                businesses around you.
+            </h2>
+
+            <p>
+                Yiwbase is a digital directory designed to help
+                people discover businesses, services, events and
+                places across Ghana.
+            </p>
+
+            <p>
+                Whether you are looking for somewhere to eat,
+                a service provider, a shop or a place to stay,
+                Yiwbase helps you find it.
+            </p>
+
+            <a href="business.html" class="primary-btn">
+                Explore Directory
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <div class="about-stats">
+
+            <div>
+                <strong>325+</strong>
+                <span>Listings</span>
+            </div>
+
+            <div>
+                <strong>280+</strong>
+                <span>Verified</span>
+            </div>
+
+            <div>
+                <strong>10+</strong>
+                <span>Categories</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Ghana</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container contact-box">
+
+        <div>
+            <span>GET LISTED</span>
+
+            <h2>
+                Own a business?
+            </h2>
+
+            <p>
+                Get your business discovered by people
+                searching for products and services.
+            </p>
+        </div>
+
+        <a href="#" class="primary-btn">
+            Add Your Business
+            <i class="fa-solid fa-plus"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Ghana.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+            <a href="#">
+                Add Business
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Contact</h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Ghana
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
