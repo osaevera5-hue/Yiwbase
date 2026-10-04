@@ -63,19 +63,28 @@ const categories = {
             },
 
             {
-                name: "Example Restaurant",
+                name: "Restaurant",
                 type: "Restaurant",
                 location: "Akropong",
                 image: "images/restaurant.jpg"
             },
 
-            {
-                name: "Example Catering Services",
+           {
+                name: "Catering Services",
+                type: "Catering",
+                location: "Aburi",
+                image: "images/catering.jpeg"
+            },
+
+             {
+                name: "Catering Services",
                 type: "Catering",
                 location: "Aburi",
                 image: "images/catering.jpeg"
             }
 
+            
+ 
         ]
 
     },
@@ -513,7 +522,7 @@ function filterBusinesses(type) {
 }
 
 
-/* =====================================================
+ /* =====================================================
    DIRECTORY SEARCH
 ===================================================== */
 
@@ -535,18 +544,15 @@ if (directorySearch) {
 
             if (!category) return;
 
-
             const data =
                 categories[category];
 
             if (!data) return;
 
-
             const filtered =
                 data.businesses.filter(function (business) {
 
                     return (
-
                         business.name
                             .toLowerCase()
                             .includes(search)
@@ -562,20 +568,81 @@ if (directorySearch) {
                         business.location
                             .toLowerCase()
                             .includes(search)
-
                     );
 
                 });
 
-
+            /* SHOW SEARCH RESULTS */
             displayBusinesses(filtered);
+
+
+            /* =========================================
+               MOBILE SEARCH BEHAVIOUR
+            ========================================= */
+
+            if (window.innerWidth <= 768) {
+
+                if (search !== "") {
+
+                    /* Hide category/subcategory area */
+                    const sidebar =
+                        document.querySelector(".category-sidebar");
+
+                    const submenu =
+                        document.getElementById("subcategoryMenu");
+
+                    if (sidebar) {
+                        sidebar.classList.add("searching");
+                    }
+
+                    if (submenu) {
+                        submenu.classList.add("searching");
+                    }
+
+
+                    /* Move directly to results */
+                    setTimeout(function () {
+
+                        const results =
+                            document.getElementById("businessResults");
+
+                        if (results) {
+
+                            results.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                    }, 100);
+
+                } else {
+
+                    /* Search cleared - show categories again */
+
+                    const sidebar =
+                        document.querySelector(".category-sidebar");
+
+                    const submenu =
+                        document.getElementById("subcategoryMenu");
+
+                    if (sidebar) {
+                        sidebar.classList.remove("searching");
+                    }
+
+                    if (submenu) {
+                        submenu.classList.remove("searching");
+                    }
+
+                }
+
+            }
 
         }
     );
 
 }
-
-
 /* =====================================================
    HOME SEARCH
 ===================================================== */
