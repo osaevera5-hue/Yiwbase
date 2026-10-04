@@ -285,7 +285,7 @@ nav > a.active,
             rgba(5,27,24,.78),
             rgba(5,27,24,.85)
         ),
-        url("../images/hero.jpg") center/cover;
+        url("images/community.jpg") center/cover;
 
     display: flex;
 
@@ -1477,6 +1477,29 @@ footer {
     .page-header h1 {
 
         font-size: 35px;
+    }
+
+}
+
+/* =====================================================
+   MOBILE SEARCH RESULTS
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* Hide category area while searching */
+    .category-sidebar.searching {
+        display: none;
+    }
+
+    /* Hide subcategories while searching */
+    #subcategoryMenu.searching {
+        display: none;
+    }
+
+    /* Give the results some space when scrolling to them */
+    #businessResults {
+        scroll-margin-top: 20px;
     }
 
 }
