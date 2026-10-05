@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Your Business | Yiwbase</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        /* =========================================
+           ADD BUSINESS PAGE
+        ========================================= */
+
+        .add-business-section {
+            padding: 90px 0;
+            background: #f8f9fa;
+            min-height: 80vh;
+        }
+
+
+        .add-business-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+
+        .add-business-header h1 {
+            font-size: 38px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+
+        .add-business-header p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           FORM CONTAINER
+        ========================================= */
+
+        .business-form-card {
+            max-width: 900px;
+            margin: auto;
+
+            background: #ffffff;
+
+            padding: 40px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+
+        /* =========================================
+           FORM GROUP
+        ========================================= */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 600;
+
+            color: #111827;
+        }
+
+
+        .form-group label span {
+            color: #d4a72c;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 7px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.3s ease;
+
+            box-sizing: border-box;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #d4a72c;
+
+            box-shadow: 0 0 0 3px rgba(212,167,44,0.10);
+        }
+
+
+        .form-group textarea {
+            min-height: 140px;
+
+            resize: vertical;
+        }
+
+
+        /* =========================================
+           TWO COLUMN FORM
+        ========================================= */
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        /* =========================================
+           PHOTO UPLOAD
+        ========================================= */
+
+        .photo-upload {
+            border: 2px dashed #dddddd;
+
+            border-radius: 10px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background: #fafafa;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .photo-upload:hover {
+            border-color: #d4a72c;
+
+            background: #fffdf6;
+        }
+
+
+        .photo-upload i {
+            font-size: 35px;
+
+            color: #d4a72c;
+
+            margin-bottom: 10px;
+        }
+
+
+        .photo-upload p {
+            margin: 5px 0;
+
+            color: #555;
+        }
+
+
+        .photo-upload small {
+            color: #888;
+        }
+
+
+        .photo-upload input {
+            display: none;
+        }
+
+
+        /* =========================================
+           IMAGE PREVIEW
+        ========================================= */
+
+        #imagePreview {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            margin-top: 15px;
+        }
+
+
+        .preview-image {
+            width: 100%;
+
+            height: 120px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+
+        /* =========================================
+           TERMS
+        ========================================= */
+
+        .terms {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin: 25px 0;
+        }
+
+
+        .terms input {
+            width: auto;
+
+            margin-top: 4px;
+        }
+
+
+        .terms label {
+            font-size: 14px;
+
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           SUBMIT BUTTON
+        ========================================= */
+
+        .submit-business-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #111827;
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .submit-business-btn:hover {
+            background: #d4a72c;
+
+            color: #111111;
+        }
+
+
+        /* =========================================
+           SUCCESS MESSAGE
+        ========================================= */
+
+        .success-message {
+            display: none;
+
+            padding: 18px;
+
+            margin-bottom: 25px;
+
+            border-radius: 8px;
+
+            background: #e9f8ef;
+
+            color: #168a45;
+
+            text-align: center;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .add-business-section {
+                padding: 60px 0;
+            }
+
+
+            .add-business-header h1 {
+                font-size: 30px;
+            }
+
+
+            .business-form-card {
+                padding: 25px 20px;
+            }
+
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+
+            #imagePreview {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .preview-image {
+                height: 110px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            Yiw<span>base</span>
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav id="mainNav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="business.html">
+                Businesses
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     ADD BUSINESS
+========================================= -->
+
+<section class="add-business-section">
+
+    <div class="container">
+
+
+        <!-- HEADER -->
+
+        <div class="add-business-header">
+
+            <h1>
+                Add Your Business
+            </h1>
+
+            <p>
+                Get your business listed on Yiwbase
+                and help customers discover your
+                products and services.
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <div class="business-form-card">
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                class="success-message"
+                id="successMessage">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <strong>
+                    Business information submitted!
+                </strong>
+
+                <br>
+
+                Your business has been recorded
+                on this device for now.
+
+            </div>
+
+
+            <form id="businessForm">
+
+
+                <!-- BUSINESS INFORMATION -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Business Name
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="businessName"
+                            placeholder="Enter business name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Business Type
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="businessType"
+                            placeholder="e.g. Restaurant, Bakery"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label>
+                        Business Category
+                        <span>*</span>
+                    </label>
+
+                    <select
+                        id="businessCategory"
+                        required>
+
+                        <option value="">
+                            Select a category
+                        </option>
+
+                        <option value="food">
+                            Food & Restaurants
+                        </option>
+
+                        <option value="fashion">
+                            Fashion & Beauty
+                        </option>
+
+                        <option value="shopping">
+                            Shopping & Retail
+                        </option>
+
+                        <option value="professional">
+                            Professional Services
+                        </option>
+
+                        <option value="health">
+                            Health & Medical
+                        </option>
+
+                        <option value="education">
+                            Education & Training
+                        </option>
+
+                        <option value="transport">
+                            Transport & Logistics
+                        </option>
+
+                        <option value="construction">
+                            Construction & Building
+                        </option>
+
+                        <option value="technology">
+                            Technology
+                        </option>
+
+                        <option value="events">
+                            Events & Entertainment
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- OWNER -->
+
+                <div class="form-group">
+
+                    <label>
+                        Owner / Contact Person
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ownerName"
+                        placeholder="Full name"
+                        required>
+
+                </div>
+
+
+                <!-- PHONE / WHATSAPP -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="024 XXX XXXX"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            WhatsApp Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            placeholder="024 XXX XXXX">
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="business@example.com">
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Business Location
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="e.g. Akropong, Akuapem"
+                        required>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label>
+                        Business Description
+                        <span>*</span>
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Tell customers about your business..."
+                        required></textarea>
+
+                </div>
+
+
+                <!-- WEBSITE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Website / Social Media
+                    </label>
+
+                    <input
+                        type="url"
+                        id="website"
+                        placeholder="https://...">
+
+                </div>
+
+
+                <!-- PHOTOS -->
+
+                <div class="form-group">
+
+                    <label>
+                        Business Photos
+                    </label>
+
+
+                    <label class="photo-upload">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        <p>
+                            Click to upload business photos
+                        </p>
+
+                        <small>
+                            You can select multiple images
+                        </small>
+
+
+                        <input
+                            type="file"
+                            id="businessImages"
+                            accept="image/*"
+                            multiple>
+
+                    </label>
+
+
+                    <div id="imagePreview"></div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="agree"
+                        required>
+
+                    <label for="agree">
+
+                        I confirm that the information
+                        provided is correct and I agree
+                        to have this business listed on
+                        Yiwbase.
+
+                    </label>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="submit-business-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Your Business
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+ <!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Akuapem.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+            <a href="#">
+                Add Business
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Contact</h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Akuapem
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================
+     MAIN SCRIPT
+========================================= -->
+
+<script src="script.js"></script>
+
+
+<!-- =========================================
+     ADD BUSINESS JAVASCRIPT
+========================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const form =
+            document.getElementById(
+                "businessForm"
+            );
+
+
+        const imageInput =
+            document.getElementById(
+                "businessImages"
+            );
+
+
+        const imagePreview =
+            document.getElementById(
+                "imagePreview"
+            );
+
+
+        const successMessage =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        /* =========================================
+           IMAGE PREVIEW
+        ========================================= */
+
+        imageInput.addEventListener(
+            "change",
+            function () {
+
+
+                imagePreview.innerHTML = "";
+
+
+                const files =
+                    Array.from(
+                        imageInput.files
+                    );
+
+
+                files.forEach(
+                    function (file) {
+
+
+                        if (
+                            !file.type.startsWith(
+                                "image/"
+                            )
+                        ) {
+                            return;
+                        }
+
+
+                        const reader =
+                            new FileReader();
+
+
+                        reader.onload =
+                            function (event) {
+
+
+                                const image =
+                                    document.createElement(
+                                        "img"
+                                    );
+
+
+                                image.src =
+                                    event.target.result;
+
+
+                                image.className =
+                                    "preview-image";
+
+
+                                imagePreview.appendChild(
+                                    image
+                                );
+
+                            };
+
+
+                        reader.readAsDataURL(
+                            file
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =========================================
+           FORM SUBMISSION
+        ========================================= */
+
+        form.addEventListener(
+            "submit",
+            function (event) {
+
+
+                event.preventDefault();
+
+
+                /* GET FORM DATA */
+
+                const business = {
+
+                    name:
+                        document.getElementById(
+                            "businessName"
+                        ).value.trim(),
+
+                    type:
+                        document.getElementById(
+                            "businessType"
+                        ).value.trim(),
+
+                    category:
+                        document.getElementById(
+                            "businessCategory"
+                        ).value,
+
+                    owner:
+                        document.getElementById(
+                            "ownerName"
+                        ).value.trim(),
+
+                    phone:
+                        document.getElementById(
+                            "phone"
+                        ).value.trim(),
+
+                    whatsapp:
+                        document.getElementById(
+                            "whatsapp"
+                        ).value.trim(),
+
+                    email:
+                        document.getElementById(
+                            "email"
+                        ).value.trim(),
+
+                    location:
+                        document.getElementById(
+                            "location"
+                        ).value.trim(),
+
+                    description:
+                        document.getElementById(
+                            "description"
+                        ).value.trim(),
+
+                    website:
+                        document.getElementById(
+                            "website"
+                        ).value.trim(),
+
+                    submittedAt:
+                        new Date().toISOString()
+
+                };
+
+
+                /* =================================
+                   SAVE TEMPORARILY
+                ================================= */
+
+                const existingBusinesses =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "yiwbaseBusinessSubmissions"
+                        )
+                    ) || [];
+
+
+                existingBusinesses.push(
+                    business
+                );
+
+
+                localStorage.setItem(
+                    "yiwbaseBusinessSubmissions",
+                    JSON.stringify(
+                        existingBusinesses
+                    )
+                );
+
+
+                /* =================================
+                   SHOW SUCCESS
+                ================================= */
+
+                successMessage.style.display =
+                    "block";
+
+
+                successMessage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+
+                /* =================================
+                   RESET FORM
+                ================================= */
+
+                form.reset();
+
+                imagePreview.innerHTML = "";
+
+
+            }
+        );
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

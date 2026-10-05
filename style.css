@@ -148,7 +148,7 @@ nav > a,
 
     color: #e9eeee;
 
-    font-size: 14px;
+    font-size: 16px;
 
     font-weight: 500;
 
@@ -185,7 +185,7 @@ nav > a.active,
 
 .dropdown-btn i {
 
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .dropdown-menu {
@@ -236,7 +236,7 @@ nav > a.active,
 
     gap: 12px;
 
-    font-size: 13px;
+    font-size: 15px;
 
     border-radius: 5px;
 }
@@ -386,7 +386,7 @@ nav > a.active,
 
     padding: 15px 5px;
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .search-box button {
@@ -570,7 +570,7 @@ nav > a.active,
 
 .category-card p {
 
-    font-size: 12px;
+    font-size: 14px;
 
     color: var(--muted);
 
@@ -581,7 +581,7 @@ nav > a.active,
 
     color: var(--green);
 
-    font-size: 12px;
+    font-size: 14px;
 
     font-weight: 700;
 }
@@ -668,7 +668,7 @@ nav > a.active,
 
     color: var(--green);
 
-    font-size: 10px;
+    font-size: 12px;
 
     font-weight: 700;
 
@@ -688,7 +688,7 @@ nav > a.active,
 
     color: var(--muted);
 
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .business-info a {
@@ -699,7 +699,7 @@ nav > a.active,
 
     margin-top: 15px;
 
-    font-size: 13px;
+    font-size: 14px;
 
     font-weight: 700;
 }
@@ -1202,7 +1202,7 @@ footer {
 
     max-width: 300px;
 
-    font-size: 13px;
+    font-size: 15px;
 
     margin-top: 15px;
 }
@@ -1228,7 +1228,7 @@ footer {
 
     color: #aebdb9;
 
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .footer-links a:hover {
@@ -1274,7 +1274,7 @@ footer {
 
     color: #81928e;
 
-    font-size: 11px;
+    font-size: 14px;
 }
 
 
@@ -1481,24 +1481,49 @@ footer {
 
 }
 
-/* =====================================================
+ /* =====================================================
    MOBILE SEARCH RESULTS
 ===================================================== */
 
 @media (max-width: 768px) {
 
-    /* Hide category area while searching */
+    /* Normal mobile layout */
+
+    .directory-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .directory-content {
+        order: 1;
+        width: 100%;
+    }
+
+    .category-sidebar {
+        order: 2;
+        width: 100%;
+    }
+
+
+    /* =========================================
+       HIDE CATEGORIES WHILE SEARCHING
+    ========================================= */
+
     .category-sidebar.searching {
-        display: none;
+        display: none !important;
     }
 
-    /* Hide subcategories while searching */
     #subcategoryMenu.searching {
-        display: none;
+        display: none !important;
     }
 
-    /* Give the results some space when scrolling to them */
+
+    /* =========================================
+       BUSINESS RESULTS
+    ========================================= */
+
     #businessResults {
+        width: 100%;
         scroll-margin-top: 20px;
     }
 
@@ -1661,3 +1686,130 @@ footer {
     }
 
 }
+
+/* =========================================
+   CATEGORY HERO
+========================================= */
+
+.category-hero {
+    position: relative;
+    min-height: 420px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.category-hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100%;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.70)
+    );
+
+    display: flex;
+    align-items: center;
+}
+
+.category-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.category-hero span {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #ffffff;
+}
+
+.category-hero h1 {
+    margin: 0 0 15px;
+
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.15;
+
+    color: #ffffff;
+}
+
+.category-hero p {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .category-hero {
+        min-height: 330px;
+        background-position: center;
+    }
+
+    .category-hero-overlay {
+        min-height: 330px;
+    }
+
+    .category-hero h1 {
+        font-size: 34px;
+    }
+
+    .category-hero p {
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .category-hero span {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 480px) {
+
+    .category-hero {
+        min-height: 300px;
+    }
+
+    .category-hero-overlay {
+        min-height: 300px;
+    }
+
+    .category-hero h1 {
+        font-size: 30px;
+    }
+
+    .category-hero p {
+        font-size: 14px;
+    }
+}
+
+
+
+
+ 

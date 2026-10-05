@@ -53,6 +53,8 @@ const categories = {
 
         title: "Food & Restaurants",
 
+        heroImage: "images/bakery.jpg",
+
         subcategories: [
             "Restaurants",
             "Chop Bars",
@@ -133,6 +135,8 @@ const categories = {
     fashion: {
 
         title: "Fashion & Beauty",
+       
+        heroImage: "images/fashion.jpg",
 
         subcategories: [
             "Fashion Designers",
@@ -405,6 +409,20 @@ function loadCategory(category) {
     const data = categories[category];
 
     if (!data) return;
+
+       /* =========================================
+       CATEGORY HERO IMAGE
+    ========================================= */
+
+    const hero = document.getElementById("categoryHero");
+
+    if (hero && data.heroImage) {
+
+        hero.style.backgroundImage =
+            `url("${data.heroImage}")`;
+
+    }
+
 
 
     const title =
