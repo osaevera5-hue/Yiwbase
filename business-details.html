@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Business Details | Yiwbase</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           BUSINESS DETAILS PAGE
+        ===================================================== */
+
+        .business-details {
+            padding: 100px 0;
+            min-height: 70vh;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: #111827;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #d4a72c;
+            color: #111111;
+        }
+
+
+        /* =====================================================
+           BUSINESS CARD
+        ===================================================== */
+
+        .business-detail-card {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.10);
+        }
+
+
+        /* =====================================================
+           CAROUSEL
+        ===================================================== */
+
+        .business-carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            background: #111111;
+        }
+
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            opacity: 0;
+            transform: translateX(100%);
+
+            transition:
+                transform 0.7s ease,
+                opacity 0.7s ease;
+
+            z-index: 1;
+        }
+
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           CAROUSEL BUTTONS
+        ===================================================== */
+
+        .carousel-btn {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 48px;
+            height: 48px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: rgba(0,0,0,0.65);
+
+            color: #ffffff;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .carousel-btn:hover {
+            background: #d4a72c;
+            color: #111111;
+        }
+
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+
+        .carousel-next {
+            right: 20px;
+        }
+
+
+        /* =====================================================
+           CAROUSEL DOTS
+        ===================================================== */
+
+        .carousel-dots {
+            position: absolute;
+
+            bottom: 20px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+
+            gap: 8px;
+
+            z-index: 20;
+        }
+
+
+        .carousel-dot {
+            width: 11px;
+            height: 11px;
+
+            padding: 0;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.6);
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .carousel-dot.active {
+            background: #d4a72c;
+
+            transform: scale(1.25);
+        }
+
+
+        /* =====================================================
+           BUSINESS CONTENT
+        ===================================================== */
+
+        .business-detail-content {
+            padding: 40px;
+        }
+
+
+        /* =====================================================
+           VERIFIED BADGE
+        ===================================================== */
+
+        .verified-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            background: #e8f7ee;
+
+            color: #168a45;
+
+            padding: 7px 14px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =====================================================
+           BUSINESS NAME
+        ===================================================== */
+
+        .business-detail-content h1 {
+            margin: 0 0 15px;
+
+            font-size: 38px;
+
+            color: #111827;
+        }
+
+
+        /* =====================================================
+           BUSINESS TYPE
+        ===================================================== */
+
+        .business-type,
+        .business-location {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin: 8px 0;
+
+            color: #555555;
+
+            font-size: 16px;
+        }
+
+
+        .business-type i,
+        .business-location i {
+            color: #d4a72c;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .business-description {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #eeeeee;
+        }
+
+
+        .business-description h3,
+        .business-contact h3 {
+            margin-bottom: 12px;
+
+            color: #111827;
+        }
+
+
+        .business-description p {
+            line-height: 1.8;
+
+            color: #555555;
+
+            margin: 0;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .business-contact {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #eeeeee;
+        }
+
+
+        .phone-number {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #333333;
+
+            font-size: 17px;
+        }
+
+
+        .phone-number i {
+            color: #d4a72c;
+        }
+
+
+        /* =====================================================
+           ACTION BUTTONS
+        ===================================================== */
+
+        .business-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .action-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 12px 22px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+
+        .call-button {
+            background: #111827;
+
+            color: #ffffff;
+        }
+
+
+        .call-button:hover {
+            background: #d4a72c;
+
+            color: #111111;
+        }
+
+
+        .whatsapp-button {
+            background: #25D366;
+
+            color: #ffffff;
+        }
+
+
+        .whatsapp-button:hover {
+            background: #1da851;
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           EMPTY / ERROR
+        ===================================================== */
+
+        .empty-results {
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+
+        .empty-results i {
+            font-size: 45px;
+
+            color: #d4a72c;
+
+            margin-bottom: 20px;
+        }
+
+
+        .empty-results h2 {
+            margin-bottom: 10px;
+
+            color: #111827;
+        }
+
+
+        .empty-results p {
+            color: #666666;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .business-details {
+                padding: 70px 0;
+            }
+
+
+            .business-carousel {
+                height: 320px;
+            }
+
+
+            .carousel-slide {
+                height: 320px;
+            }
+
+
+            .business-detail-content {
+                padding: 25px 20px;
+            }
+
+
+            .business-detail-content h1 {
+                font-size: 28px;
+            }
+
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .carousel-prev {
+                left: 10px;
+            }
+
+
+            .carousel-next {
+                right: 10px;
+            }
+
+
+            .business-actions {
+                flex-direction: column;
+            }
+
+
+            .action-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="index.html" class="logo">
+            Yiw<span>base</span>
+        </a>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav id="mainNav">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="business.html">
+                Businesses
+            </a>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     BUSINESS DETAILS
+===================================================== -->
+
+<section class="business-details">
+
+    <div class="container">
+
+
+        <!-- BACK BUTTON -->
+
+        <a
+            href="business.html"
+            class="back-button">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Businesses
+
+        </a>
+
+
+        <!-- BUSINESS INFORMATION WILL LOAD HERE -->
+
+        <div id="businessDetails">
+
+            <div class="empty-results">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <h2>
+                    Loading Business...
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+ <footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Ghana.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+            <a href="#">
+                Add Business
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Contact</h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Ghana
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MAIN SCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+<!-- =====================================================
+     BUSINESS DETAILS JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* =====================================================
+       GET BUSINESS NAME FROM URL
+    ===================================================== */
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const businessName =
+        params.get("name");
+
+
+    const businessDetails =
+        document.getElementById("businessDetails");
+
+
+    if (!businessDetails) {
+        return;
+    }
+
+
+    /* =====================================================
+       CHECK CATEGORY DATA
+    ===================================================== */
+
+    if (typeof categories === "undefined") {
+
+        businessDetails.innerHTML = `
+
+            <div class="empty-results">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <h2>
+                    Business Data Error
+                </h2>
+
+                <p>
+                    The business information could not
+                    be loaded.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /* =====================================================
+       FIND BUSINESS
+    ===================================================== */
+
+    let selectedBusiness = null;
+
+
+    for (const categoryKey in categories) {
+
+        const category =
+            categories[categoryKey];
+
+
+        if (
+            !category ||
+            !Array.isArray(category.businesses)
+        ) {
+            continue;
+        }
+
+
+        const found =
+            category.businesses.find(
+                function (business) {
+
+                    return (
+                        business.name ===
+                        businessName
+                    );
+
+                }
+            );
+
+
+        if (found) {
+
+            selectedBusiness = found;
+
+            break;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       BUSINESS NOT FOUND
+    ===================================================== */
+
+    if (!selectedBusiness) {
+
+        businessDetails.innerHTML = `
+
+            <div class="empty-results">
+
+                <i class="fa-solid fa-store"></i>
+
+                <h2>
+                    Business Not Found
+                </h2>
+
+                <p>
+                    Sorry, this business could not
+                    be found.
+                </p>
+
+                <a
+                    href="business.html"
+                    class="action-button call-button">
+
+                    <i class="fa-solid fa-store"></i>
+
+                    Browse Businesses
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /* =====================================================
+       GET IMAGES
+    ===================================================== */
+
+    let images = [];
+
+
+    if (
+        Array.isArray(selectedBusiness.images) &&
+        selectedBusiness.images.length > 0
+    ) {
+
+        images =
+            selectedBusiness.images;
+
+    }
+
+    else if (
+        selectedBusiness.image
+    ) {
+
+        images = [
+            selectedBusiness.image
+        ];
+
+    }
+
+    else {
+
+        images = [
+            "images/no-image.jpg"
+        ];
+
+    }
+
+
+    /* =====================================================
+       CREATE CAROUSEL
+    ===================================================== */
+
+    let carouselHTML = "";
+
+
+    images.forEach(
+        function (image, index) {
+
+            carouselHTML += `
+
+                <div
+                    class="carousel-slide ${
+                        index === 0
+                        ? "active"
+                        : ""
+                    }">
+
+                    <img
+                        src="${image}"
+                        alt="${selectedBusiness.name}"
+                        onerror="
+                            this.src='images/no-image.jpg'
+                        "
+                    >
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    /* =====================================================
+       CAROUSEL CONTROLS
+    ===================================================== */
+
+    let carouselControls = "";
+
+
+    if (images.length > 1) {
+
+        carouselControls = `
+
+            <button
+                type="button"
+                class="carousel-btn carousel-prev"
+                id="prevSlide">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="carousel-btn carousel-next"
+                id="nextSlide">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+
+            <div
+                class="carousel-dots"
+                id="carouselDots">
+            </div>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       CALL BUTTON
+    ===================================================== */
+
+    let callButton = "";
+
+
+    if (selectedBusiness.phone) {
+
+        callButton = `
+
+            <a
+                href="tel:${selectedBusiness.phone}"
+                class="action-button call-button">
+
+                <i class="fa-solid fa-phone"></i>
+
+                Call
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       WHATSAPP BUTTON
+    ===================================================== */
+
+    let whatsappButton = "";
+
+
+    if (selectedBusiness.whatsapp) {
+
+        whatsappButton = `
+
+            <a
+                href="https://wa.me/${selectedBusiness.whatsapp}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="action-button whatsapp-button">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+    ===================================================== */
+
+    const description =
+        selectedBusiness.description ||
+        "This business is listed on Yiwbase. More information about this business will be available soon.";
+
+
+    /* =====================================================
+       CREATE BUSINESS PAGE
+    ===================================================== */
+
+    businessDetails.innerHTML = `
+
+        <div class="business-detail-card">
+
+
+            <!-- CAROUSEL -->
+
+            <div class="business-carousel">
+
+                ${carouselHTML}
+
+                ${carouselControls}
+
+            </div>
+
+
+            <!-- BUSINESS INFORMATION -->
+
+            <div class="business-detail-content">
+
+
+                <!-- VERIFIED -->
+
+                <span class="verified-badge">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Verified Business
+
+                </span>
+
+
+                <!-- NAME -->
+
+                <h1>
+                    ${selectedBusiness.name}
+                </h1>
+
+
+                <!-- TYPE -->
+
+                <p class="business-type">
+
+                    <i class="fa-solid fa-store"></i>
+
+                    ${selectedBusiness.type || "Business"}
+
+                </p>
+
+
+                <!-- LOCATION -->
+
+                <p class="business-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    ${
+                        selectedBusiness.location ||
+                        "Location not available"
+                    }
+
+                </p>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="business-description">
+
+                    <h3>
+                        About This Business
+                    </h3>
+
+                    <p>
+                        ${description}
+                    </p>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="business-contact">
+
+                    <h3>
+                        Contact Business
+                    </h3>
+
+
+                    ${
+                        selectedBusiness.phone
+
+                        ?
+
+                        `
+
+                        <p class="phone-number">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            ${selectedBusiness.phone}
+
+                        </p>
+
+                        `
+
+                        :
+
+                        `
+
+                        <p class="phone-number">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            Phone number not available
+
+                        </p>
+
+                        `
+                    }
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+
+                <div class="business-actions">
+
+                    ${callButton}
+
+                    ${whatsappButton}
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* =====================================================
+       CAROUSEL
+    ===================================================== */
+
+    if (images.length <= 1) {
+        return;
+    }
+
+
+    const slides =
+        document.querySelectorAll(
+            ".carousel-slide"
+        );
+
+
+    const dotsContainer =
+        document.getElementById(
+            "carouselDots"
+        );
+
+
+    const previousButton =
+        document.getElementById(
+            "prevSlide"
+        );
+
+
+    const nextButton =
+        document.getElementById(
+            "nextSlide"
+        );
+
+
+    let currentSlide = 0;
+
+    let autoSlide = null;
+
+
+    /* =====================================================
+       SHOW SLIDE
+    ===================================================== */
+
+    function showSlide(index) {
+
+
+        if (index >= slides.length) {
+
+            currentSlide = 0;
+
+        }
+
+        else if (index < 0) {
+
+            currentSlide =
+                slides.length - 1;
+
+        }
+
+        else {
+
+            currentSlide = index;
+
+        }
+
+
+        slides.forEach(
+            function (slide) {
+
+                slide.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        const dots =
+            document.querySelectorAll(
+                ".carousel-dot"
+            );
+
+
+        dots.forEach(
+            function (dot) {
+
+                dot.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        slides[currentSlide]
+            .classList.add("active");
+
+
+        if (dots[currentSlide]) {
+
+            dots[currentSlide]
+                .classList.add("active");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CREATE DOTS
+    ===================================================== */
+
+    slides.forEach(
+        function (slide, index) {
+
+            const dot =
+                document.createElement(
+                    "button"
+                );
+
+
+            dot.type = "button";
+
+            dot.className =
+                "carousel-dot";
+
+
+            if (index === 0) {
+
+                dot.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            dot.addEventListener(
+                "click",
+                function () {
+
+                    showSlide(index);
+
+                    restartAutoSlide();
+
+                }
+            );
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       NEXT SLIDE
+    ===================================================== */
+
+    function nextSlide() {
+
+        showSlide(
+            currentSlide + 1
+        );
+
+    }
+
+
+    /* =====================================================
+       PREVIOUS BUTTON
+    ===================================================== */
+
+    if (previousButton) {
+
+        previousButton.addEventListener(
+            "click",
+            function () {
+
+                showSlide(
+                    currentSlide - 1
+                );
+
+                restartAutoSlide();
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       NEXT BUTTON
+    ===================================================== */
+
+    if (nextButton) {
+
+        nextButton.addEventListener(
+            "click",
+            function () {
+
+                showSlide(
+                    currentSlide + 1
+                );
+
+                restartAutoSlide();
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       AUTOMATIC SLIDE
+    ===================================================== */
+
+    function startAutoSlide() {
+
+        autoSlide =
+            setInterval(
+                function () {
+
+                    nextSlide();
+
+                },
+                4000
+            );
+
+    }
+
+
+    /* =====================================================
+       RESTART AUTO SLIDE
+    ===================================================== */
+
+    function restartAutoSlide() {
+
+        clearInterval(
+            autoSlide
+        );
+
+        startAutoSlide();
+
+    }
+
+
+    /* =====================================================
+       START CAROUSEL
+    ===================================================== */
+
+    startAutoSlide();
+
+
+});
+
+</script>
+
+
+</body>
+</html>

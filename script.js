@@ -1,14 +1,16 @@
-/* =====================================================
+ /* =====================================================
    YIWBASE JAVASCRIPT
 ===================================================== */
 
 
-/* ================= MOBILE MENU ================= */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 const menuBtn = document.getElementById("menuBtn");
 const mainNav = document.getElementById("mainNav");
 
-if (menuBtn) {
+if (menuBtn && mainNav) {
 
     menuBtn.addEventListener("click", function () {
 
@@ -16,15 +18,19 @@ if (menuBtn) {
 
         const icon = menuBtn.querySelector("i");
 
-        if (mainNav.classList.contains("show")) {
+        if (icon) {
 
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
+            if (mainNav.classList.contains("show")) {
 
-        } else {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
 
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
+            } else {
+
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+
+            }
 
         }
 
@@ -38,6 +44,10 @@ if (menuBtn) {
 ===================================================== */
 
 const categories = {
+
+    /* =================================================
+       FOOD
+    ================================================= */
 
     food: {
 
@@ -57,38 +67,68 @@ const categories = {
 
             {
                 name: "Akro Golden Bakery",
+
                 type: "Bakery",
-                location: "Akuapem",
-                image: "images/bakery.jpg"
+
+                location: "Akropong, Akuapem",
+
+                phone: "0240000000",
+
+                whatsapp: "233240000000",
+
+                description:
+                    "Akro Golden Bakery provides fresh bread, pastries, cakes and other delicious baked products. We also take orders for special occasions and events.",
+
+                images: [
+                    "images/bakery.jpg",
+                    "images/bakery1.webp",
+                    "images/bakery2.webp"
+                ]
             },
 
             {
-                name: "Restaurant",
-                type: "Restaurant",
-                location: "Akropong",
-                image: "images/restaurant.jpg"
+                     name: "ABC Restaurant",
+                     type: "Restaurant",
+                     location: "Akropong, Akuapem",
+                     phone: "0241234567",
+                     whatsapp: "233241234567",
+                     description: "ABC Restaurant serves delicious local and continental meals. We also accept orders for events and special occasions.",
+                     images: [
+                   "images/restaurant.jpg",
+                   "images/restaurant1.png",
+                   "images/restaurant2.jpg"
+    ]
+ 
             },
 
-           {
+            {
                 name: "Catering Services",
+
                 type: "Catering",
+
                 location: "Aburi",
+
                 image: "images/catering.jpeg"
             },
 
-             {
-                name: "Catering Services",
+            {
+                name: "Catering Services 2",
+
                 type: "Catering",
+
                 location: "Aburi",
+
                 image: "images/catering.jpeg"
             }
 
-            
- 
         ]
 
     },
 
+
+    /* =================================================
+       FASHION
+    ================================================= */
 
     fashion: {
 
@@ -108,15 +148,21 @@ const categories = {
 
             {
                 name: "Example Fashion House",
+
                 type: "Fashion Designer",
+
                 location: "Accra",
+
                 image: "images/fashion.jpg"
             },
 
             {
                 name: "Example Beauty Salon",
+
                 type: "Beauty Salon",
+
                 location: "Koforidua",
+
                 image: "images/beautysaloon.avif"
             }
 
@@ -124,6 +170,10 @@ const categories = {
 
     },
 
+
+    /* =================================================
+       HOTELS
+    ================================================= */
 
     hotels: {
 
@@ -141,15 +191,21 @@ const categories = {
 
             {
                 name: "Example Guest House",
+
                 type: "Guest House",
+
                 location: "Aburi",
+
                 image: "images/guesshouse.jpg"
             },
 
             {
                 name: "Example Hotel",
+
                 type: "Hotel",
+
                 location: "Akuapem",
+
                 image: "images/hotel.jpeg"
             }
 
@@ -157,6 +213,10 @@ const categories = {
 
     },
 
+
+    /* =================================================
+       SHOPS
+    ================================================= */
 
     shops: {
 
@@ -175,8 +235,11 @@ const categories = {
 
             {
                 name: "Example Provision Store",
+
                 type: "Retail",
+
                 location: "Akropong",
+
                 image: "images/provision.jpg"
             }
 
@@ -184,6 +247,10 @@ const categories = {
 
     },
 
+
+    /* =================================================
+       HEALTH
+    ================================================= */
 
     health: {
 
@@ -203,6 +270,10 @@ const categories = {
     },
 
 
+    /* =================================================
+       EDUCATION
+    ================================================= */
+
     education: {
 
         title: "Education",
@@ -220,6 +291,10 @@ const categories = {
 
     },
 
+
+    /* =================================================
+       CONSTRUCTION
+    ================================================= */
 
     construction: {
 
@@ -240,6 +315,10 @@ const categories = {
     },
 
 
+    /* =================================================
+       TRANSPORT
+    ================================================= */
+
     transport: {
 
         title: "Transport",
@@ -258,6 +337,10 @@ const categories = {
     },
 
 
+    /* =================================================
+       TECHNOLOGY
+    ================================================= */
+
     technology: {
 
         title: "Technology",
@@ -275,6 +358,10 @@ const categories = {
 
     },
 
+
+    /* =================================================
+       EVENTS
+    ================================================= */
 
     events: {
 
@@ -304,7 +391,7 @@ const categories = {
 function openCategory(category) {
 
     window.location.href =
-        "business.html?category=" + category;
+        "business.html?category=" + encodeURIComponent(category);
 
 }
 
@@ -329,15 +416,13 @@ function loadCategory(category) {
     const submenu =
         document.getElementById("subcategoryMenu");
 
-    const results =
-        document.getElementById("businessResults");
-
 
     if (title) {
 
         title.innerText = data.title;
 
     }
+
 
     if (subTitle) {
 
@@ -346,24 +431,30 @@ function loadCategory(category) {
     }
 
 
-    /* SUBCATEGORY MENU */
+    /* ===============================================
+       SUBCATEGORY MENU
+    =============================================== */
 
     if (submenu) {
 
         submenu.innerHTML = "";
+
 
         data.subcategories.forEach(function (sub) {
 
             const button =
                 document.createElement("button");
 
+
             button.innerText = sub;
+
 
             button.onclick = function () {
 
                 filterBusinesses(sub);
 
             };
+
 
             submenu.appendChild(button);
 
@@ -372,7 +463,9 @@ function loadCategory(category) {
     }
 
 
-    /* BUSINESS CARDS */
+    /* ===============================================
+       BUSINESS CARDS
+    =============================================== */
 
     displayBusinesses(data.businesses);
 
@@ -388,11 +481,16 @@ function displayBusinesses(businesses) {
     const results =
         document.getElementById("businessResults");
 
+
     if (!results) return;
 
 
     results.innerHTML = "";
 
+
+    /* ===============================================
+       NO RESULTS
+    =============================================== */
 
     if (businesses.length === 0) {
 
@@ -420,20 +518,38 @@ function displayBusinesses(businesses) {
     }
 
 
+    /* ===============================================
+       CREATE BUSINESS CARDS
+    =============================================== */
+
     businesses.forEach(function (business) {
+
 
         const card =
             document.createElement("div");
 
-        card.className = "business-card";
+
+        card.className =
+            "business-card";
+
+
+        /* =========================================
+           FIRST IMAGE
+        ========================================= */
+
+        const firstImage =
+            business.images && business.images.length > 0
+                ? business.images[0]
+                : business.image;
 
 
         card.innerHTML = `
 
             <div class="business-image">
 
-                <img src="${business.image}"
-                     alt="${business.name}">
+                <img
+                    src="${firstImage}"
+                    alt="${business.name}">
 
                 <span class="verified">
 
@@ -452,9 +568,11 @@ function displayBusinesses(businesses) {
                     ${business.type}
                 </small>
 
+
                 <h3>
                     ${business.name}
                 </h3>
+
 
                 <p>
 
@@ -464,9 +582,14 @@ function displayBusinesses(businesses) {
 
                 </p>
 
-                <a href="#">
+
+                <a
+                    href="business-details.html?name=${encodeURIComponent(business.name)}">
+
                     View Business
+
                     <i class="fa-solid fa-arrow-right"></i>
+
                 </a>
 
             </div>
@@ -491,10 +614,13 @@ function filterBusinesses(type) {
         new URLSearchParams(window.location.search)
         .get("category");
 
+
     if (!category) return;
 
 
-    const data = categories[category];
+    const data =
+        categories[category];
+
 
     if (!data) return;
 
@@ -509,50 +635,57 @@ function filterBusinesses(type) {
         });
 
 
-    if (filtered.length > 0) {
-
-        displayBusinesses(filtered);
-
-    } else {
-
-        displayBusinesses(data.businesses);
-
-    }
+    displayBusinesses(filtered);
 
 }
 
 
- /* =====================================================
+/* =====================================================
    DIRECTORY SEARCH
 ===================================================== */
 
 const directorySearch =
     document.getElementById("directorySearch");
 
+
 if (directorySearch) {
+
 
     directorySearch.addEventListener(
         "input",
         function () {
 
+
             const search =
-                this.value.toLowerCase().trim();
+                this.value
+                .toLowerCase()
+                .trim();
+
 
             const category =
                 new URLSearchParams(window.location.search)
                 .get("category");
 
+
             if (!category) return;
+
 
             const data =
                 categories[category];
 
+
             if (!data) return;
+
+
+            /* =========================================
+               SEARCH BUSINESS NAME / TYPE / LOCATION
+            ========================================= */
 
             const filtered =
                 data.businesses.filter(function (business) {
 
                     return (
+
                         business.name
                             .toLowerCase()
                             .includes(search)
@@ -568,43 +701,62 @@ if (directorySearch) {
                         business.location
                             .toLowerCase()
                             .includes(search)
+
                     );
 
                 });
 
-            /* SHOW SEARCH RESULTS */
+
             displayBusinesses(filtered);
 
 
             /* =========================================
-               MOBILE SEARCH BEHAVIOUR
+               MOBILE SEARCH
             ========================================= */
 
             if (window.innerWidth <= 768) {
 
+
+                const sidebar =
+                    document.querySelector(
+                        ".category-sidebar"
+                    );
+
+
+                const submenu =
+                    document.getElementById(
+                        "subcategoryMenu"
+                    );
+
+
                 if (search !== "") {
 
-                    /* Hide category/subcategory area */
-                    const sidebar =
-                        document.querySelector(".category-sidebar");
-
-                    const submenu =
-                        document.getElementById("subcategoryMenu");
 
                     if (sidebar) {
-                        sidebar.classList.add("searching");
+
+                        sidebar.classList.add(
+                            "searching"
+                        );
+
                     }
+
 
                     if (submenu) {
-                        submenu.classList.add("searching");
+
+                        submenu.classList.add(
+                            "searching"
+                        );
+
                     }
 
 
-                    /* Move directly to results */
                     setTimeout(function () {
 
                         const results =
-                            document.getElementById("businessResults");
+                            document.getElementById(
+                                "businessResults"
+                            );
+
 
                         if (results) {
 
@@ -617,22 +769,25 @@ if (directorySearch) {
 
                     }, 100);
 
+
                 } else {
 
-                    /* Search cleared - show categories again */
-
-                    const sidebar =
-                        document.querySelector(".category-sidebar");
-
-                    const submenu =
-                        document.getElementById("subcategoryMenu");
 
                     if (sidebar) {
-                        sidebar.classList.remove("searching");
+
+                        sidebar.classList.remove(
+                            "searching"
+                        );
+
                     }
 
+
                     if (submenu) {
-                        submenu.classList.remove("searching");
+
+                        submenu.classList.remove(
+                            "searching"
+                        );
+
                     }
 
                 }
@@ -640,9 +795,12 @@ if (directorySearch) {
             }
 
         }
+
     );
 
 }
+
+
 /* =====================================================
    HOME SEARCH
 ===================================================== */
@@ -651,6 +809,7 @@ function searchBusinesses() {
 
     const input =
         document.getElementById("homeSearch");
+
 
     if (!input) return;
 
@@ -661,7 +820,9 @@ function searchBusinesses() {
 
     if (search === "") {
 
-        alert("Please enter what you are looking for.");
+        alert(
+            "Please enter what you are looking for."
+        );
 
         return;
 
@@ -689,10 +850,13 @@ function quickSearch(value) {
     const input =
         document.getElementById("homeSearch");
 
+
     if (!input) return;
 
 
-    input.value = value;
+    input.value =
+        value;
+
 
     searchBusinesses();
 
@@ -703,13 +867,22 @@ function quickSearch(value) {
    AUTO LOAD CATEGORY
 ===================================================== */
 
-if (window.location.pathname.includes("business.html")) {
+if (
+    window.location.pathname.includes(
+        "business.html"
+    )
+) {
+
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
+
 
     const category =
         params.get("category") || "food";
+
 
     loadCategory(category);
 
@@ -722,6 +895,7 @@ if (window.location.pathname.includes("business.html")) {
 
 const homeSearch =
     document.getElementById("homeSearch");
+
 
 if (homeSearch) {
 
