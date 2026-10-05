@@ -1,5 +1,5 @@
  /* =====================================================
-   YIWBASE JAVASCRIPT
+   YIWBASE - MAIN JAVASCRIPT
 ===================================================== */
 
 
@@ -45,8 +45,9 @@ if (menuBtn && mainNav) {
 
 const categories = {
 
+
     /* =================================================
-       FOOD
+       FOOD & RESTAURANTS
     ================================================= */
 
     food: {
@@ -88,20 +89,28 @@ const categories = {
                 ]
             },
 
+
             {
-                     name: "ABC Restaurant",
-                     type: "Restaurant",
-                     location: "Akropong, Akuapem",
-                     phone: "0241234567",
-                     whatsapp: "233241234567",
-                     description: "ABC Restaurant serves delicious local and continental meals. We also accept orders for events and special occasions.",
-                     images: [
-                   "images/restaurant.jpg",
-                   "images/restaurant1.png",
-                   "images/restaurant2.jpg"
-    ]
- 
+                name: "ABC Restaurant",
+
+                type: "Restaurant",
+
+                location: "Akropong, Akuapem",
+
+                phone: "0241234567",
+
+                whatsapp: "233241234567",
+
+                description:
+                    "ABC Restaurant serves delicious local and continental meals. We also accept orders for events and special occasions.",
+
+                images: [
+                    "images/restaurant.jpg",
+                    "images/restaurant1.png",
+                    "images/restaurant2.jpg"
+                ]
             },
+
 
             {
                 name: "Catering Services",
@@ -112,6 +121,7 @@ const categories = {
 
                 image: "images/catering.jpeg"
             },
+
 
             {
                 name: "Catering Services 2",
@@ -129,13 +139,13 @@ const categories = {
 
 
     /* =================================================
-       FASHION
+       FASHION & BEAUTY
     ================================================= */
 
     fashion: {
 
         title: "Fashion & Beauty",
-       
+
         heroImage: "images/fashion.jpg",
 
         subcategories: [
@@ -160,6 +170,7 @@ const categories = {
                 image: "images/fashion.jpg"
             },
 
+
             {
                 name: "Example Beauty Salon",
 
@@ -176,12 +187,14 @@ const categories = {
 
 
     /* =================================================
-       HOTELS
+       HOTELS & ACCOMMODATION
     ================================================= */
 
     hotels: {
 
         title: "Hotels & Accommodation",
+
+        heroImage: "images/hotel.jpeg",
 
         subcategories: [
             "Hotels",
@@ -203,6 +216,7 @@ const categories = {
                 image: "images/guesshouse.jpg"
             },
 
+
             {
                 name: "Example Hotel",
 
@@ -219,12 +233,14 @@ const categories = {
 
 
     /* =================================================
-       SHOPS
+       SHOPS & RETAIL
     ================================================= */
 
     shops: {
 
         title: "Shops & Retail",
+
+        heroImage: "images/provision.jpg",
 
         subcategories: [
             "Supermarkets",
@@ -253,7 +269,7 @@ const categories = {
 
 
     /* =================================================
-       HEALTH
+       HEALTH & PHARMACY
     ================================================= */
 
     health: {
@@ -364,7 +380,7 @@ const categories = {
 
 
     /* =================================================
-       EVENTS
+       EVENTS & ENTERTAINMENT
     ================================================= */
 
     events: {
@@ -395,7 +411,8 @@ const categories = {
 function openCategory(category) {
 
     window.location.href =
-        "business.html?category=" + encodeURIComponent(category);
+        "business.html?category=" +
+        encodeURIComponent(category);
 
 }
 
@@ -410,11 +427,13 @@ function loadCategory(category) {
 
     if (!data) return;
 
-       /* =========================================
-       CATEGORY HERO IMAGE
-    ========================================= */
 
-    const hero = document.getElementById("categoryHero");
+    /* =================================================
+       CATEGORY HERO IMAGE
+    ================================================= */
+
+    const hero =
+        document.getElementById("categoryHero");
 
     if (hero && data.heroImage) {
 
@@ -424,6 +443,9 @@ function loadCategory(category) {
     }
 
 
+    /* =================================================
+       CATEGORY TITLES
+    ================================================= */
 
     const title =
         document.getElementById("categoryTitle");
@@ -437,189 +459,520 @@ function loadCategory(category) {
 
     if (title) {
 
-        title.innerText = data.title;
+        title.innerText =
+            data.title;
 
     }
 
 
     if (subTitle) {
 
-        subTitle.innerText = data.title;
+        subTitle.innerText =
+            data.title;
 
     }
 
 
-    /* ===============================================
-       SUBCATEGORY MENU
-    =============================================== */
+    /* =================================================
+       CREATE FILTER BUTTONS
+    ================================================= */
 
     if (submenu) {
 
         submenu.innerHTML = "";
 
 
-        data.subcategories.forEach(function (sub) {
+        /* =============================================
+           ALL BUTTON
+        ============================================= */
 
-            const button =
-                document.createElement("button");
+        const allButton =
+            document.createElement("button");
+
+        allButton.type = "button";
+
+        allButton.innerText =
+            "All";
+
+        allButton.className =
+            "subcategory-btn active all-filter";
 
 
-            button.innerText = sub;
+        allButton.onclick =
+            function () {
 
+                displayBusinesses(
+                    data.businesses
+                );
 
-            button.onclick = function () {
-
-                filterBusinesses(sub);
+                setActiveFilter(
+                    allButton
+                );
 
             };
 
 
-            submenu.appendChild(button);
+        submenu.appendChild(
+            allButton
+        );
 
-        });
+
+        /* =============================================
+           SUBCATEGORY BUTTONS
+        ============================================= */
+
+        if (data.subcategories) {
+
+            data.subcategories.forEach(
+                function (sub) {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+                    button.type = "button";
+
+                    button.innerText =
+                        sub;
+
+                    button.className =
+                        "subcategory-btn";
+
+
+                    button.onclick =
+                        function () {
+
+                            filterBusinesses(
+                                sub
+                            );
+
+                            setActiveFilter(
+                                button
+                            );
+
+                        };
+
+
+                    submenu.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+        }
 
     }
 
 
-    /* ===============================================
-       BUSINESS CARDS
-    =============================================== */
+    /* =================================================
+       SHOW ALL BUSINESSES BY DEFAULT
+    ================================================= */
 
-    displayBusinesses(data.businesses);
+    displayBusinesses(
+        data.businesses
+    );
 
 }
 
 
 /* =====================================================
-   DISPLAY BUSINESSES
+   SET ACTIVE FILTER
 ===================================================== */
 
-function displayBusinesses(businesses) {
+function setActiveFilter(activeButton) {
 
-    const results =
-        document.getElementById("businessResults");
-
-
-    if (!results) return;
-
-
-    results.innerHTML = "";
+    const buttons =
+        document.querySelectorAll(
+            ".subcategory-btn"
+        );
 
 
-    /* ===============================================
-       NO RESULTS
-    =============================================== */
+    buttons.forEach(
+        function (button) {
 
-    if (businesses.length === 0) {
+            button.classList.remove(
+                "active"
+            );
 
-        results.innerHTML = `
+        }
+    );
 
-            <div class="empty-results">
 
-                <i class="fa-solid fa-store"></i>
+    if (activeButton) {
 
-                <h3>
-                    No businesses listed yet
-                </h3>
-
-                <p>
-                    Businesses in this category
-                    will appear here.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
+        activeButton.classList.add(
+            "active"
+        );
 
     }
 
-
-    /* ===============================================
-       CREATE BUSINESS CARDS
-    =============================================== */
-
-    businesses.forEach(function (business) {
-
-
-        const card =
-            document.createElement("div");
-
-
-        card.className =
-            "business-card";
-
-
-        /* =========================================
-           FIRST IMAGE
-        ========================================= */
-
-        const firstImage =
-            business.images && business.images.length > 0
-                ? business.images[0]
-                : business.image;
-
-
-        card.innerHTML = `
-
-            <div class="business-image">
-
-                <img
-                    src="${firstImage}"
-                    alt="${business.name}">
-
-                <span class="verified">
-
-                    <i class="fa-solid fa-circle-check"></i>
-
-                    Verified
-
-                </span>
-
-            </div>
-
-
-            <div class="business-info">
-
-                <small>
-                    ${business.type}
-                </small>
-
-
-                <h3>
-                    ${business.name}
-                </h3>
-
-
-                <p>
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    ${business.location}
-
-                </p>
-
-
-                <a
-                    href="business-details.html?name=${encodeURIComponent(business.name)}">
-
-                    View Business
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-            </div>
-
-        `;
-
-
-        results.appendChild(card);
-
-    });
-
 }
+
+
+/* =====================================================
+   FILTER MAP
+===================================================== */
+
+const filterMap = {
+
+    /* FOOD */
+
+    "restaurants": [
+        "restaurant",
+        "restaurants"
+    ],
+
+    "chop bars": [
+        "chop bar",
+        "chop bars"
+    ],
+
+    "fast food": [
+        "fast food"
+    ],
+
+    "bakeries": [
+        "bakery",
+        "bakeries"
+    ],
+
+    "catering services": [
+        "catering",
+        "caterer",
+        "catering service",
+        "catering services"
+    ],
+
+    "food vendors": [
+        "food vendor",
+        "food vendors"
+    ],
+
+    "bars & pubs": [
+        "bar",
+        "bars",
+        "pub",
+        "pubs"
+    ],
+
+
+    /* FASHION */
+
+    "fashion designers": [
+        "fashion designer",
+        "fashion designers"
+    ],
+
+    "boutiques": [
+        "boutique",
+        "boutiques"
+    ],
+
+    "tailors": [
+        "tailor",
+        "tailors"
+    ],
+
+    "barbers": [
+        "barber",
+        "barbers"
+    ],
+
+    "salons": [
+        "salon",
+        "salons"
+    ],
+
+    "makeup artists": [
+        "makeup artist",
+        "makeup artists"
+    ],
+
+    "beauty shops": [
+        "beauty shop",
+        "beauty shops"
+    ],
+
+
+    /* HOTELS */
+
+    "hotels": [
+        "hotel",
+        "hotels"
+    ],
+
+    "guest houses": [
+        "guest house",
+        "guest houses"
+    ],
+
+    "resorts": [
+        "resort",
+        "resorts"
+    ],
+
+    "apartments": [
+        "apartment",
+        "apartments"
+    ],
+
+    "hostels": [
+        "hostel",
+        "hostels"
+    ],
+
+
+    /* SHOPS */
+
+    "supermarkets": [
+        "supermarket",
+        "supermarkets"
+    ],
+
+    "provision stores": [
+        "provision",
+        "provision store",
+        "provision stores",
+        "retail"
+    ],
+
+    "electronics": [
+        "electronics",
+        "electronic"
+    ],
+
+    "mobile phones": [
+        "mobile phone",
+        "mobile phones",
+        "phone"
+    ],
+
+    "furniture": [
+        "furniture"
+    ],
+
+    "clothing shops": [
+        "clothing",
+        "clothing shop",
+        "clothing shops"
+    ],
+
+
+    /* HEALTH */
+
+    "pharmacies": [
+        "pharmacy",
+        "pharmacies"
+    ],
+
+    "hospitals": [
+        "hospital",
+        "hospitals"
+    ],
+
+    "clinics": [
+        "clinic",
+        "clinics"
+    ],
+
+    "laboratories": [
+        "laboratory",
+        "laboratories",
+        "lab"
+    ],
+
+    "dental clinics": [
+        "dental",
+        "dental clinic",
+        "dental clinics"
+    ],
+
+    "medical services": [
+        "medical",
+        "medical service",
+        "medical services"
+    ],
+
+
+    /* EDUCATION */
+
+    "basic schools": [
+        "basic school",
+        "basic schools"
+    ],
+
+    "senior high schools": [
+        "senior high school",
+        "senior high schools",
+        "shs"
+    ],
+
+    "universities": [
+        "university",
+        "universities"
+    ],
+
+    "training centres": [
+        "training centre",
+        "training centres",
+        "training center",
+        "training centers"
+    ],
+
+    "tutors": [
+        "tutor",
+        "tutors"
+    ],
+
+    "computer schools": [
+        "computer school",
+        "computer schools"
+    ],
+
+
+    /* CONSTRUCTION */
+
+    "contractors": [
+        "contractor",
+        "contractors"
+    ],
+
+    "architects": [
+        "architect",
+        "architects"
+    ],
+
+    "masons": [
+        "mason",
+        "masons"
+    ],
+
+    "carpenters": [
+        "carpenter",
+        "carpenters"
+    ],
+
+    "electricians": [
+        "electrician",
+        "electricians"
+    ],
+
+    "plumbers": [
+        "plumber",
+        "plumbers"
+    ],
+
+    "building materials": [
+        "building material",
+        "building materials"
+    ],
+
+
+    /* TRANSPORT */
+
+    "taxis": [
+        "taxi",
+        "taxis"
+    ],
+
+    "car rentals": [
+        "car rental",
+        "car rentals"
+    ],
+
+    "logistics": [
+        "logistic",
+        "logistics"
+    ],
+
+    "delivery": [
+        "delivery",
+        "deliveries"
+    ],
+
+    "drivers": [
+        "driver",
+        "drivers"
+    ],
+
+    "transport companies": [
+        "transport company",
+        "transport companies"
+    ],
+
+
+    /* TECHNOLOGY */
+
+    "web designers": [
+        "web designer",
+        "web designers"
+    ],
+
+    "graphic designers": [
+        "graphic designer",
+        "graphic designers"
+    ],
+
+    "it services": [
+        "it service",
+        "it services",
+        "it"
+    ],
+
+    "software": [
+        "software"
+    ],
+
+    "computer shops": [
+        "computer shop",
+        "computer shops"
+    ],
+
+    "phone repairs": [
+        "phone repair",
+        "phone repairs"
+    ],
+
+
+    /* EVENTS */
+
+    "event planners": [
+        "event planner",
+        "event planners"
+    ],
+
+    "djs": [
+        "dj",
+        "djs"
+    ],
+
+    "photographers": [
+        "photographer",
+        "photographers"
+    ],
+
+    "videographers": [
+        "videographer",
+        "videographers"
+    ],
+
+    "lounges": [
+        "lounge",
+        "lounges"
+    ],
+
+    "music": [
+        "music"
+    ],
+
+    "decorators": [
+        "decorator",
+        "decorators"
+    ]
+
+};
 
 
 /* =====================================================
@@ -629,8 +982,9 @@ function displayBusinesses(businesses) {
 function filterBusinesses(type) {
 
     const category =
-        new URLSearchParams(window.location.search)
-        .get("category");
+        new URLSearchParams(
+            window.location.search
+        ).get("category");
 
 
     if (!category) return;
@@ -643,17 +997,234 @@ function filterBusinesses(type) {
     if (!data) return;
 
 
+    /* =============================================
+       ALL
+    ============================================= */
+
+    if (
+        type &&
+        type.toLowerCase().trim() === "all"
+    ) {
+
+        displayBusinesses(
+            data.businesses
+        );
+
+        return;
+
+    }
+
+
+    /* =============================================
+       GET FILTER TYPES
+    ============================================= */
+
+    const filterKey =
+        type.toLowerCase().trim();
+
+
+    const allowedTypes =
+        filterMap[filterKey] ||
+        [filterKey];
+
+
+    /* =============================================
+       FILTER BUSINESSES
+    ============================================= */
+
     const filtered =
-        data.businesses.filter(function (business) {
+        data.businesses.filter(
+            function (business) {
 
-            return business.type
-                .toLowerCase()
-                .includes(type.toLowerCase());
+                if (!business.type) {
 
-        });
+                    return false;
+
+                }
 
 
-    displayBusinesses(filtered);
+                const businessType =
+                    business.type
+                        .toLowerCase()
+                        .trim();
+
+
+                return allowedTypes.some(
+                    function (allowedType) {
+
+                        return businessType.includes(
+                            allowedType
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* =============================================
+       DISPLAY RESULTS
+    ============================================= */
+
+    displayBusinesses(
+        filtered
+    );
+
+}
+
+
+/* =====================================================
+   DISPLAY BUSINESSES
+===================================================== */
+
+function displayBusinesses(businesses) {
+
+    const results =
+        document.getElementById(
+            "businessResults"
+        );
+
+
+    if (!results) return;
+
+
+    results.innerHTML = "";
+
+
+    /* =============================================
+       NO RESULTS
+    ============================================= */
+
+    if (
+        !businesses ||
+        businesses.length === 0
+    ) {
+
+        results.innerHTML = `
+
+            <div class="empty-results">
+
+                <i class="fa-solid fa-store"></i>
+
+                <h3>
+                    No businesses found
+                </h3>
+
+                <p>
+                    There are currently no
+                    businesses listed under
+                    this filter.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* =============================================
+       CREATE BUSINESS CARDS
+    ============================================= */
+
+    businesses.forEach(
+        function (business) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "business-card";
+
+
+            /* =====================================
+               BUSINESS IMAGE
+            ===================================== */
+
+            const firstImage =
+                business.images &&
+                business.images.length > 0
+
+                    ? business.images[0]
+
+                    : business.image;
+
+
+            /* =====================================
+               BUSINESS CARD
+            ===================================== */
+
+            card.innerHTML = `
+
+                <div class="business-image">
+
+                    <img
+                        src="${firstImage || ""}"
+                        alt="${business.name}"
+                        loading="lazy"
+                    >
+
+                    <span class="verified">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Verified
+
+                    </span>
+
+                </div>
+
+
+                <div class="business-info">
+
+                    <small>
+                        ${business.type || ""}
+                    </small>
+
+
+                    <h3>
+                        ${business.name || ""}
+                    </h3>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        ${business.location || ""}
+
+                    </p>
+
+
+                    <a
+                        href="./business-details.html?name=${encodeURIComponent(
+                            business.name || ""
+                        )}"
+                    >
+
+                        View Business
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            `;
+
+
+            results.appendChild(
+                card
+            );
+
+        }
+    );
 
 }
 
@@ -663,26 +1234,27 @@ function filterBusinesses(type) {
 ===================================================== */
 
 const directorySearch =
-    document.getElementById("directorySearch");
+    document.getElementById(
+        "directorySearch"
+    );
 
 
 if (directorySearch) {
-
 
     directorySearch.addEventListener(
         "input",
         function () {
 
-
             const search =
                 this.value
-                .toLowerCase()
-                .trim();
+                    .toLowerCase()
+                    .trim();
 
 
             const category =
-                new URLSearchParams(window.location.search)
-                .get("category");
+                new URLSearchParams(
+                    window.location.search
+                ).get("category");
 
 
             if (!category) return;
@@ -696,44 +1268,75 @@ if (directorySearch) {
 
 
             /* =========================================
-               SEARCH BUSINESS NAME / TYPE / LOCATION
+               SEARCH ALL BUSINESS INFORMATION
             ========================================= */
 
             const filtered =
-                data.businesses.filter(function (business) {
+                data.businesses.filter(
+                    function (business) {
 
-                    return (
-
-                        business.name
-                            .toLowerCase()
-                            .includes(search)
-
-                        ||
-
-                        business.type
-                            .toLowerCase()
-                            .includes(search)
-
-                        ||
-
-                        business.location
-                            .toLowerCase()
-                            .includes(search)
-
-                    );
-
-                });
+                        const name =
+                            (
+                                business.name ||
+                                ""
+                            ).toLowerCase();
 
 
-            displayBusinesses(filtered);
+                        const type =
+                            (
+                                business.type ||
+                                ""
+                            ).toLowerCase();
+
+
+                        const location =
+                            (
+                                business.location ||
+                                ""
+                            ).toLowerCase();
+
+
+                        const description =
+                            (
+                                business.description ||
+                                ""
+                            ).toLowerCase();
+
+
+                        return (
+
+                            name.includes(search)
+
+                            ||
+
+                            type.includes(search)
+
+                            ||
+
+                            location.includes(search)
+
+                            ||
+
+                            description.includes(search)
+
+                        );
+
+                    }
+                );
+
+
+            displayBusinesses(
+                filtered
+            );
 
 
             /* =========================================
                MOBILE SEARCH
             ========================================= */
 
-            if (window.innerWidth <= 768) {
-
+            if (
+                window.innerWidth <= 768
+            ) {
 
                 const sidebar =
                     document.querySelector(
@@ -768,24 +1371,27 @@ if (directorySearch) {
                     }
 
 
-                    setTimeout(function () {
+                    setTimeout(
+                        function () {
 
-                        const results =
-                            document.getElementById(
-                                "businessResults"
-                            );
+                            const results =
+                                document.getElementById(
+                                    "businessResults"
+                                );
 
 
-                        if (results) {
+                            if (results) {
 
-                            results.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
+                                results.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
 
-                        }
+                            }
 
-                    }, 100);
+                        },
+                        100
+                    );
 
 
                 } else {
@@ -813,7 +1419,6 @@ if (directorySearch) {
             }
 
         }
-
     );
 
 }
@@ -826,7 +1431,9 @@ if (directorySearch) {
 function searchBusinesses() {
 
     const input =
-        document.getElementById("homeSearch");
+        document.getElementById(
+            "homeSearch"
+        );
 
 
     if (!input) return;
@@ -866,7 +1473,9 @@ function searchBusinesses() {
 function quickSearch(value) {
 
     const input =
-        document.getElementById("homeSearch");
+        document.getElementById(
+            "homeSearch"
+        );
 
 
     if (!input) return;
@@ -882,37 +1491,13 @@ function quickSearch(value) {
 
 
 /* =====================================================
-   AUTO LOAD CATEGORY
-===================================================== */
-
-if (
-    window.location.pathname.includes(
-        "business.html"
-    )
-) {
-
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const category =
-        params.get("category") || "food";
-
-
-    loadCategory(category);
-
-}
-
-
-/* =====================================================
-   SEARCH ENTER KEY
+   HOME SEARCH ENTER KEY
 ===================================================== */
 
 const homeSearch =
-    document.getElementById("homeSearch");
+    document.getElementById(
+        "homeSearch"
+    );
 
 
 if (homeSearch) {
@@ -929,5 +1514,154 @@ if (homeSearch) {
 
         }
     );
+
+}
+
+
+/* =====================================================
+   AUTO LOAD CATEGORY PAGE
+===================================================== */
+
+if (
+    window.location.pathname.includes(
+        "business.html"
+    )
+) {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const category =
+        params.get("category") ||
+        "food";
+
+
+    loadCategory(
+        category
+    );
+
+}
+
+
+/* =====================================================
+   HOME SEARCH ON DIRECTORY PAGE
+===================================================== */
+
+if (
+    window.location.pathname.includes(
+        "business.html"
+    )
+) {
+
+    const savedSearch =
+        localStorage.getItem(
+            "yiwbaseSearch"
+        );
+
+
+    if (
+        savedSearch &&
+        directorySearch
+    ) {
+
+        directorySearch.value =
+            savedSearch;
+
+
+        /* =============================================
+           RUN SAVED SEARCH
+        ============================================= */
+
+        const category =
+            new URLSearchParams(
+                window.location.search
+            ).get("category");
+
+
+        if (category) {
+
+            const data =
+                categories[category];
+
+
+            if (data) {
+
+                const search =
+                    savedSearch
+                        .toLowerCase()
+                        .trim();
+
+
+                const filtered =
+                    data.businesses.filter(
+                        function (business) {
+
+                            const name =
+                                (
+                                    business.name ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const type =
+                                (
+                                    business.type ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const location =
+                                (
+                                    business.location ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            const description =
+                                (
+                                    business.description ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            return (
+
+                                name.includes(search)
+
+                                ||
+
+                                type.includes(search)
+
+                                ||
+
+                                location.includes(search)
+
+                                ||
+
+                                description.includes(search)
+
+                            );
+
+                        }
+                    );
+
+
+                displayBusinesses(
+                    filtered
+                );
+
+
+                localStorage.removeItem(
+                    "yiwbaseSearch"
+                );
+
+            }
+
+        }
+
+    }
 
 }
