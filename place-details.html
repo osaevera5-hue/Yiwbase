@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Place Details | Yiwbase</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+            <span>YIW</span>BASE
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav id="mainNav">
+
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <!-- BUSINESSES -->
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+
+                    Businesses
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="business.html?category=food">
+                        <i class="fa-solid fa-utensils"></i>
+                        Food & Restaurants
+                    </a>
+
+                    <a href="business.html?category=fashion">
+                        <i class="fa-solid fa-shirt"></i>
+                        Fashion & Beauty
+                    </a>
+
+                    <a href="business.html?category=hotels">
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotels & Accommodation
+                    </a>
+
+                    <a href="business.html?category=shops">
+                        <i class="fa-solid fa-store"></i>
+                        Shops & Retail
+                    </a>
+
+                    <a href="business.html?category=health">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        Health & Pharmacy
+                    </a>
+
+                    <a href="business.html?category=education">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Education
+                    </a>
+
+                    <a href="business.html?category=construction">
+                        <i class="fa-solid fa-building"></i>
+                        Construction
+                    </a>
+
+                    <a href="business.html?category=transport">
+                        <i class="fa-solid fa-car"></i>
+                        Transport
+                    </a>
+
+                    <a href="business.html?category=technology">
+                        <i class="fa-solid fa-laptop"></i>
+                        Technology
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENTS -->
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+
+                    Events
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="events.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        All Events
+                    </a>
+
+                    <a href="events.html?category=festivals">
+                        <i class="fa-solid fa-drum"></i>
+                        Festivals
+                    </a>
+
+                    <a href="events.html?category=cultural">
+                        <i class="fa-solid fa-masks-theater"></i>
+                        Cultural Events
+                    </a>
+
+                    <a href="events.html?category=entertainment">
+                        <i class="fa-solid fa-music"></i>
+                        Entertainment
+                    </a>
+
+                    <a href="events.html?category=business">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Business Events
+                    </a>
+
+                    <a href="events.html?category=sports">
+                        <i class="fa-solid fa-futbol"></i>
+                        Sports
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PLACES -->
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+
+                    Places
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="places.html">
+                        <i class="fa-solid fa-location-dot"></i>
+                        All Places
+                    </a>
+
+                    <a href="places.html?category=tourist-attractions">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        Tourist Attractions
+                    </a>
+
+                    <a href="places.html?category=historic">
+                        <i class="fa-solid fa-landmark"></i>
+                        Historic Places
+                    </a>
+
+                    <a href="places.html?category=culture">
+                        <i class="fa-solid fa-building-columns"></i>
+                        Cultural Places
+                    </a>
+
+                    <a href="places.html?category=hotels">
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotels & Lodging
+                    </a>
+
+                    <a href="places.html?category=restaurants">
+                        <i class="fa-solid fa-utensils"></i>
+                        Restaurants
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PEOPLE -->
+
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+
+                    People
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+
+                <div class="dropdown-menu">
+
+                    <a href="people.html">
+                        <i class="fa-solid fa-users"></i>
+                        All People
+                    </a>
+
+                    <a href="people.html?category=leaders">
+                        <i class="fa-solid fa-crown"></i>
+                        Community Leaders
+                    </a>
+
+                    <a href="people.html?category=professionals">
+                        <i class="fa-solid fa-user-tie"></i>
+                        Professionals
+                    </a>
+
+                    <a href="people.html?category=business">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Business People
+                    </a>
+
+                    <a href="people.html?category=creatives">
+                        <i class="fa-solid fa-palette"></i>
+                        Creatives
+                    </a>
+
+                    <a href="people.html?category=public-figures">
+                        <i class="fa-solid fa-star"></i>
+                        Public Figures
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="news.html">
+                News
+            </a>
+
+
+            <a href="index.html#about">
+                About
+            </a>
+
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+
+        </nav>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     BACK TO PLACES
+===================================================== -->
+
+<section class="place-details-hero">
+
+    <div class="container">
+
+        <a
+            href="places.html"
+            class="back-places">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Places
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PLACE DETAILS
+===================================================== -->
+
+<section class="place-details-section">
+
+    <div class="container">
+
+        <div id="placeDetails">
+
+            <!-- JavaScript loads place here -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Akuapem.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+            <a href="#">
+                Add Business
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Contact</h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Akuapem
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+ 
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =====================================================
+   PLACE DATA
+===================================================== */
+
+const places = {
+
+    "aburi-botanical-gardens": {
+
+        name: "Aburi Botanical Gardens",
+
+        category: "Tourist Attraction",
+
+        location: "Aburi, Akuapem",
+
+        image: "images/place1.jpg",
+
+        description:
+            "A beautiful destination known for its gardens, trees, peaceful environment and natural scenery. It is a popular place for visitors looking to experience the natural beauty of the Akuapem area."
+
+    },
+
+
+    "historic-akuapem-site": {
+
+        name: "Historic Akuapem Site",
+
+        category: "Historic",
+
+        location: "Akuapem, Ghana",
+
+        image: "images/place2.jpg",
+
+        description:
+            "Explore a historic location connected to the rich history and heritage of the Akuapem people. Discover the stories, traditions and heritage that have shaped the area."
+
+    },
+
+
+    "akuapem-cultural-centre": {
+
+        name: "Akuapem Cultural Centre",
+
+        category: "Cultural",
+
+        location: "Akuapem, Ghana",
+
+        image: "images/place3.jpg",
+
+        description:
+            "Discover local traditions, culture, history and the heritage of the Akuapem people. The centre provides an opportunity to learn more about the community and its cultural identity."
+
+    },
+
+
+    "akuapem-hotel": {
+
+        name: "Akuapem Hotel",
+
+        category: "Hotel & Lodging",
+
+        location: "Akuapem, Ghana",
+
+        image: "images/place4.jpg",
+
+        description:
+            "A comfortable place to stay while exploring the beautiful Akuapem mountains and surrounding communities. Enjoy a relaxing environment while discovering the area."
+
+    },
+
+
+    "akuapem-restaurant": {
+
+        name: "Akuapem Restaurant",
+
+        category: "Restaurant",
+
+        location: "Akuapem, Ghana",
+
+        image: "images/place5.jpg",
+
+        description:
+            "Enjoy local dishes and refreshing meals while experiencing the hospitality of Akuapem. A place for visitors and residents to enjoy good food and community atmosphere."
+
+    },
+
+
+    "akuapem-mountain-view": {
+
+        name: "Akuapem Mountain View",
+
+        category: "Tourist Attraction",
+
+        location: "Akuapem, Ghana",
+
+        image: "images/place6.jpg",
+
+        description:
+            "Enjoy spectacular views of the Akuapem landscape and surrounding communities. Experience the beauty of the mountains and natural environment."
+
+    }
+
+};
+
+
+
+/* =====================================================
+   GET PLACE FROM URL
+===================================================== */
+
+const placeParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const placeName =
+    placeParams.get("place");
+
+
+const selectedPlace =
+    places[placeName];
+
+
+const placeDetails =
+    document.getElementById(
+        "placeDetails"
+    );
+
+
+
+/* =====================================================
+   DISPLAY PLACE
+===================================================== */
+
+if (selectedPlace) {
+
+    document.title =
+        selectedPlace.name +
+        " | Yiwbase";
+
+
+    placeDetails.innerHTML = `
+
+        <div class="place-details-grid">
+
+
+            <!-- IMAGE -->
+
+            <div class="place-details-image">
+
+                <img
+                    src="${selectedPlace.image}"
+                    alt="${selectedPlace.name}"
+                >
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="place-details-content">
+
+                <span class="place-details-category">
+
+                    ${selectedPlace.category}
+
+                </span>
+
+
+                <h1>
+
+                    ${selectedPlace.name}
+
+                </h1>
+
+
+                <div class="place-info-list">
+
+
+                    <div class="place-info-item">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>
+                                Location
+                            </small>
+
+                            <strong>
+                                ${selectedPlace.location}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="place-info-item">
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        <div>
+
+                            <small>
+                                Category
+                            </small>
+
+                            <strong>
+                                ${selectedPlace.category}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="place-description">
+
+                    <h2>
+                        About This Place
+                    </h2>
+
+                    <p>
+                        ${selectedPlace.description}
+                    </p>
+
+                </div>
+
+
+                <div class="place-detail-actions">
+
+                    <a
+                        href="places.html"
+                        class="place-main-btn">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to Places
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   PLACE NOT FOUND
+===================================================== */
+
+else {
+
+    placeDetails.innerHTML = `
+
+        <div class="place-not-found">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <h1>
+                Place Not Found
+            </h1>
+
+            <p>
+                Sorry, the place you are looking for
+                could not be found.
+            </p>
+
+            <a
+                href="places.html"
+                class="place-main-btn">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Places
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>

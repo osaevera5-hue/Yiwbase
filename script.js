@@ -1665,3 +1665,47 @@ if (
     }
 
 }
+
+/* =====================================================
+   NAVIGATION DROPDOWNS
+===================================================== */
+
+document.querySelectorAll(".dropdown-btn").forEach(button => {
+
+    button.addEventListener("click", function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        const dropdown = this.closest(".nav-dropdown");
+
+        /* Close other dropdowns */
+        document.querySelectorAll(".nav-dropdown").forEach(item => {
+
+            if (item !== dropdown) {
+                item.classList.remove("open");
+            }
+
+        });
+
+        /* Toggle current dropdown */
+        dropdown.classList.toggle("open");
+
+    });
+
+});
+
+
+/* Close dropdown when clicking outside */
+
+document.addEventListener("click", function (e) {
+
+    if (!e.target.closest(".nav-dropdown")) {
+
+        document.querySelectorAll(".nav-dropdown").forEach(dropdown => {
+            dropdown.classList.remove("open");
+        });
+
+    }
+
+});

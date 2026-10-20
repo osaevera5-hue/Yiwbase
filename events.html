@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Events | Yiwbase</title>
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- GOOGLE FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- YIWBASE CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+            <span>YIW</span>BASE
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <nav id="mainNav">
+
+            <!-- HOME -->
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <!-- BUSINESSES -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+                    Businesses
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="business.html?category=food">
+                        <i class="fa-solid fa-utensils"></i>
+                        Food & Restaurants
+                    </a>
+
+                    <a href="business.html?category=fashion">
+                        <i class="fa-solid fa-shirt"></i>
+                        Fashion & Beauty
+                    </a>
+
+                    <a href="business.html?category=hotels">
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotels & Accommodation
+                    </a>
+
+                    <a href="business.html?category=shops">
+                        <i class="fa-solid fa-store"></i>
+                        Shops & Retail
+                    </a>
+
+                    <a href="business.html?category=health">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        Health & Pharmacy
+                    </a>
+
+                    <a href="business.html?category=education">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Education
+                    </a>
+
+                    <a href="business.html?category=construction">
+                        <i class="fa-solid fa-building"></i>
+                        Construction
+                    </a>
+
+                    <a href="business.html?category=transport">
+                        <i class="fa-solid fa-car"></i>
+                        Transport
+                    </a>
+
+                    <a href="business.html?category=technology">
+                        <i class="fa-solid fa-laptop"></i>
+                        Technology
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENTS -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+                    Events
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="events.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        All Events
+                    </a>
+
+                    <a href="events.html?category=festivals">
+                        <i class="fa-solid fa-drum"></i>
+                        Festivals
+                    </a>
+
+                    <a href="events.html?category=cultural">
+                        <i class="fa-solid fa-masks-theater"></i>
+                        Cultural Events
+                    </a>
+
+                    <a href="events.html?category=entertainment">
+                        <i class="fa-solid fa-music"></i>
+                        Entertainment
+                    </a>
+
+                    <a href="events.html?category=business">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Business Events
+                    </a>
+
+                    <a href="events.html?category=sports">
+                        <i class="fa-solid fa-futbol"></i>
+                        Sports
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PLACES -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+                    Places
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="places.html">
+                        <i class="fa-solid fa-location-dot"></i>
+                        All Places
+                    </a>
+
+                    <a href="places.html?category=tourist-attractions">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                        Tourist Attractions
+                    </a>
+
+                    <a href="places.html?category=historic">
+                        <i class="fa-solid fa-landmark"></i>
+                        Historic Places
+                    </a>
+
+                    <a href="places.html?category=culture">
+                        <i class="fa-solid fa-building-columns"></i>
+                        Cultural Places
+                    </a>
+
+                    <a href="places.html?category=hotels">
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotels & Lodging
+                    </a>
+
+                    <a href="places.html?category=restaurants">
+                        <i class="fa-solid fa-utensils"></i>
+                        Restaurants
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- PEOPLE -->
+            <div class="nav-dropdown">
+
+                <button class="dropdown-btn" type="button">
+                    People
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+                <div class="dropdown-menu">
+
+                    <a href="people.html">
+                        <i class="fa-solid fa-users"></i>
+                        All People
+                    </a>
+
+                    <a href="people.html?category=leaders">
+                        <i class="fa-solid fa-crown"></i>
+                        Community Leaders
+                    </a>
+
+                    <a href="people.html?category=professionals">
+                        <i class="fa-solid fa-user-tie"></i>
+                        Professionals
+                    </a>
+
+                    <a href="people.html?category=business">
+                        <i class="fa-solid fa-briefcase"></i>
+                        Business People
+                    </a>
+
+                    <a href="people.html?category=creatives">
+                        <i class="fa-solid fa-palette"></i>
+                        Creatives
+                    </a>
+
+                    <a href="people.html?category=public-figures">
+                        <i class="fa-solid fa-star"></i>
+                        Public Figures
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEWS -->
+            <a href="news.html">
+                News
+            </a>
+
+
+            <!-- ABOUT -->
+            <a href="index.html#about">
+                About
+            </a>
+
+
+            <!-- CONTACT -->
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE MENU -->
+        <button class="menu-btn" id="menuBtn" type="button">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     EVENTS HERO
+===================================================== -->
+
+<section class="page-hero events-page-hero">
+
+    <div class="container">
+
+        <span class="hero-small-title">
+            YIWBASE DIRECTORY
+        </span>
+
+        <h1>
+            Events
+        </h1>
+
+        <p>
+            Discover events, festivals, entertainment and
+            activities happening across Akuapem.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVENTS SECTION
+===================================================== -->
+
+<section class="events-section">
+
+    <div class="container">
+
+
+        <!-- SECTION HEADER -->
+
+        <div class="section-heading">
+
+            <span>
+                DISCOVER
+            </span>
+
+            <h2>
+                Events Around You
+            </h2>
+
+            <p>
+                Find upcoming events and activities happening
+                in your community.
+            </p>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="events-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="eventSearch"
+                placeholder="Search events..."
+            >
+
+        </div>
+
+
+
+        <!-- FILTERS -->
+
+        <div class="event-filters">
+
+            <button
+                class="event-filter active"
+                data-category="all"
+            >
+                All Events
+            </button>
+
+            <button
+                class="event-filter"
+                data-category="festivals"
+            >
+                Festivals
+            </button>
+
+            <button
+                class="event-filter"
+                data-category="cultural"
+            >
+                Cultural Events
+            </button>
+
+            <button
+                class="event-filter"
+                data-category="entertainment"
+            >
+                Entertainment
+            </button>
+
+            <button
+                class="event-filter"
+                data-category="business"
+            >
+                Business Events
+            </button>
+
+            <button
+                class="event-filter"
+                data-category="sports"
+            >
+                Sports
+            </button>
+
+        </div>
+
+
+
+        <!-- EVENT GRID -->
+
+        <div class="events-grid" id="eventsGrid">
+
+
+            <!-- EVENT 1 -->
+
+            <article
+                class="event-card"
+                data-category="festivals"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/nana.jpeg"
+                        alt="Festival event"
+                    >
+
+                    <span class="event-category">
+                        Festival
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Akuapem Cultural Festival
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        Experience culture, music, food and
+                        traditional celebrations.
+                    </p>
+
+                   <a href="event-details.html?event=akuapem-cultural-festival" class="event-btn">
+              View Event
+            <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- EVENT 2 -->
+
+            <article
+                class="event-card"
+                data-category="cultural"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/ohene.jpeg"
+                        alt="Cultural event"
+                    >
+
+                    <span class="event-category">
+                        Cultural
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Traditional Heritage Celebration
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        A celebration of traditional heritage,
+                        history and community.
+                    </p>
+
+                    <a href="event-details.html?event=traditional-heritage" class="event-btn">
+    View Event
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- EVENT 3 -->
+
+            <article
+                class="event-card"
+                data-category="entertainment"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/night.jpeg"
+                        alt="Entertainment event"
+                    >
+
+                    <span class="event-category">
+                        Entertainment
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Akuapem Music Night
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        Music, entertainment and live performances
+                        from talented artists.
+                    </p>
+
+                 <a href="event-details.html?event=akuapem-music-night" class="event-btn">
+    View Event
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+                </div>
+
+            </article>
+
+
+
+            <!-- EVENT 4 -->
+
+            <article
+                class="event-card"
+                data-category="business"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/business.webp"
+                        alt="Business event"
+                    >
+
+                    <span class="event-category">
+                        Business
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Akuapem Business & Networking
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        Connect with entrepreneurs, businesses
+                        and professionals.
+                    </p>
+
+                     <a href="event-details.html?event=business-networking" class="event-btn">
+    View Event
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+                </div>
+
+            </article>
+
+
+
+            <!-- EVENT 5 -->
+
+            <article
+                class="event-card"
+                data-category="sports"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/sports.jpg"
+                        alt="Sports event"
+                    >
+
+                    <span class="event-category">
+                        Sports
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Akuapem Community Sports
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        Community sports and activities for
+                        people of all ages.
+                    </p>
+
+                   <a href="event-details.html?event=community-sports" class="event-btn">
+    View Event
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+                </div>
+
+            </article>
+
+
+
+            <!-- EVENT 6 -->
+
+            <article
+                class="event-card"
+                data-category="festivals"
+            >
+
+                <div class="event-image">
+
+                    <img
+                        src="images/odwria200.jpeg"
+                        alt="Community festival"
+                    >
+
+                    <span class="event-category">
+                        Festival
+                    </span>
+
+                </div>
+
+
+                <div class="event-content">
+
+                    <div class="event-date">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span>
+                            Coming Soon
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Community Festival
+                    </h3>
+
+                    <p class="event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Akuapem
+
+                    </p>
+
+                    <p>
+                        Bring the community together through
+                        culture and celebration.
+                    </p>
+                         <a href="event-details.html?event=community-festival" class="event-btn">
+    View Event
+    <i class="fa-solid fa-arrow-right"></i>
+</a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            id="noEvents"
+            class="no-events"
+            style="display:none;"
+        >
+
+            <i class="fa-regular fa-calendar-xmark"></i>
+
+            <h3>
+                No Events Found
+            </h3>
+
+            <p>
+                Try another search or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+ 
+<footer>
+
+    <div class="container footer-grid">
+
+        <div class="footer-about">
+
+            <a href="index.html" class="logo footer-logo">
+                <span>YIW</span>BASE
+            </a>
+
+            <p>
+                Discover businesses, services, people,
+                places and events across Akuapem.
+            </p>
+
+            <div class="socials">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Directory</h4>
+
+            <a href="business.html?category=food">
+                Food & Restaurants
+            </a>
+
+            <a href="business.html?category=fashion">
+                Fashion & Beauty
+            </a>
+
+            <a href="business.html?category=hotels">
+                Hotels
+            </a>
+
+            <a href="business.html?category=shops">
+                Shops & Retail
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Explore</h4>
+
+            <a href="news.html">
+                News
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Places
+            </a>
+
+            <a href="#">
+                Add Business
+            </a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Contact</h4>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Akuapem
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@yiwbase.com
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Yiwbase. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- EVENTS JAVASCRIPT -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    const eventCards =
+        document.querySelectorAll(".event-card");
+
+    const filterButtons =
+        document.querySelectorAll(".event-filter");
+
+    const searchInput =
+        document.getElementById("eventSearch");
+
+    const noEvents =
+        document.getElementById("noEvents");
+
+
+    let currentCategory = "all";
+
+
+    /* =========================================
+       FILTER EVENTS
+    ========================================= */
+
+    function filterEvents() {
+
+        const searchValue =
+            searchInput.value.toLowerCase().trim();
+
+        let visibleCount = 0;
+
+
+        eventCards.forEach(card => {
+
+            const category =
+                card.dataset.category;
+
+            const text =
+                card.textContent.toLowerCase();
+
+
+            const categoryMatch =
+                currentCategory === "all" ||
+                category === currentCategory;
+
+
+            const searchMatch =
+                searchValue === "" ||
+                text.includes(searchValue);
+
+
+            if (categoryMatch && searchMatch) {
+
+                card.style.display = "";
+
+                visibleCount++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visibleCount === 0) {
+
+            noEvents.style.display = "block";
+
+        } else {
+
+            noEvents.style.display = "none";
+
+        }
+
+    }
+
+
+    /* =========================================
+       CATEGORY BUTTONS
+    ========================================= */
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+
+            this.classList.add("active");
+
+
+            currentCategory =
+                this.dataset.category;
+
+
+            filterEvents();
+
+        });
+
+    });
+
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    searchInput.addEventListener(
+        "input",
+        filterEvents
+    );
+
+
+    /* =========================================
+       LOAD CATEGORY FROM URL
+    ========================================= */
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const urlCategory =
+        params.get("category");
+
+
+    if (urlCategory) {
+
+        const matchingButton =
+            document.querySelector(
+                `.event-filter[data-category="${urlCategory}"]`
+            );
+
+
+        if (matchingButton) {
+
+            matchingButton.click();
+
+        }
+
+    }
+
+
+});
+
+</script>
+
+
+
+<!-- YIWBASE MAIN SCRIPT -->
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

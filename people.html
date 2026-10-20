@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People of Akuapem | Yiwbase</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+/* =====================================================
+   PEOPLE DIRECTORY PAGE
+===================================================== */
+
+.people-page-hero {
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(rgba(11, 61, 46, 0.80), rgba(11, 61, 46, 0.80)),
+        url("images/people.jpg") center/cover no-repeat;
+    color: #fff;
+}
+
+.people-page-hero .hero-small-title {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.people-page-hero h1 {
+    margin: 0 0 15px;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.people-page-hero p {
+    max-width: 680px;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.people-section {
+    padding: 75px 0;
+    background: #fff;
+}
+
+/* Search */
+
+.people-search {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 28px;
+}
+
+.people-search > i {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.people-search input {
+    width: 100%;
+    height: 52px;
+    padding: 0 20px 0 48px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.people-search input:focus {
+    border-color: #0b3d2e;
+    box-shadow: 0 0 0 3px rgba(11, 61, 46, 0.08);
+}
+
+/* Category filters */
+
+.people-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.people-filter {
+    padding: 10px 17px;
+    border: 1px solid #0b3d2e;
+    border-radius: 30px;
+    background: #fff;
+    color: #0b3d2e;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .25s ease, color .25s ease;
+}
+
+.people-filter:hover {
+    background: #0b3d2e;
+    color: #fff;
+}
+
+.people-filter.active {
+    background: #d4a72c;
+    border-color: #d4a72c;
+    color: #111;
+}
+
+/* People cards */
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.person-card {
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .06);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.person-card[hidden] {
+    display: none !important;
+}
+
+.person-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+}
+
+.person-photo {
+    display: block;
+    height: 300px;
+    overflow: hidden;
+    background: #f1f4f2;
+}
+
+.person-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform .4s ease;
+}
+
+.person-card:hover .person-photo img {
+    transform: scale(1.04);
+}
+
+.person-content {
+    padding: 23px;
+}
+
+.person-category {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: #f8edc9;
+    color: #594414;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.person-content h3 {
+    margin: 0 0 10px;
+    color: #0b3d2e;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.person-location {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 0 12px;
+    color: #666;
+    font-size: 13px;
+}
+
+.person-location i {
+    color: #0b3d2e;
+}
+
+.person-content > p:not(.person-location) {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.person-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    color: #0b3d2e;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .2s ease, gap .2s ease;
+}
+
+.person-btn:hover {
+    gap: 12px;
+    color: #b88b12;
+}
+
+/* Empty search result */
+
+.no-people {
+    padding: 55px 20px;
+    text-align: center;
+    color: #777;
+}
+
+.no-people[hidden] {
+    display: none !important;
+}
+
+.no-people > i {
+    margin-bottom: 15px;
+    color: #d4a72c;
+    font-size: 42px;
+}
+
+.no-people h3 {
+    margin: 0 0 10px;
+    color: #0b3d2e;
+    font-size: 24px;
+}
+
+.no-people p {
+    margin: 0;
+}
+
+/* Responsive layout */
+
+@media (max-width: 992px) {
+    .people-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .person-photo {
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .people-page-hero {
+        min-height: 310px;
+    }
+
+    .people-page-hero h1 {
+        font-size: 39px;
+    }
+
+    .people-page-hero p {
+        font-size: 15px;
+    }
+
+    .people-section {
+        padding: 55px 0;
+    }
+
+    .people-filters {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+    }
+
+    .people-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .people-filter {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .people-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .person-photo {
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .people-page-hero {
+        min-height: 270px;
+    }
+
+    .people-page-hero h1 {
+        font-size: 33px;
+    }
+
+    .people-section {
+        padding: 45px 0;
+    }
+
+    .person-photo {
+        height: 280px;
+    }
+
+    .person-content {
+        padding: 20px;
+    }
+}
+
+    </style>
+ 
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo"><span>YIW</span>BASE</a>
+
+        <nav id="mainNav">
+            <a href="index.html">Home</a>
+
+            <div class="nav-dropdown">
+                <button class="dropdown-btn" type="button">Businesses <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="business.html?category=food">Food & Restaurants</a>
+                    <a href="business.html?category=fashion">Fashion & Beauty</a>
+                    <a href="business.html?category=hotels">Hotels & Accommodation</a>
+                    <a href="business.html?category=shops">Shops & Retail</a>
+                    <a href="business.html?category=health">Health & Pharmacy</a>
+                    <a href="business.html?category=education">Education</a>
+                    <a href="business.html?category=construction">Construction</a>
+                    <a href="business.html?category=transport">Transport</a>
+                    <a href="business.html?category=technology">Technology</a>
+                </div>
+            </div>
+
+            <div class="nav-dropdown">
+                <button class="dropdown-btn" type="button">Events <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="events.html">All Events</a>
+                    <a href="events.html?category=festivals">Festivals</a>
+                    <a href="events.html?category=cultural">Cultural Events</a>
+                    <a href="events.html?category=entertainment">Entertainment</a>
+                    <a href="events.html?category=business">Business Events</a>
+                    <a href="events.html?category=sports">Sports</a>
+                </div>
+            </div>
+
+            <div class="nav-dropdown">
+                <button class="dropdown-btn" type="button">Places <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="places.html">All Places</a>
+                    <a href="places.html?category=tourist-attractions">Tourist Attractions</a>
+                    <a href="places.html?category=historic">Historic Places</a>
+                    <a href="places.html?category=culture">Cultural Places</a>
+                    <a href="places.html?category=hotels">Hotels & Lodging</a>
+                    <a href="places.html?category=restaurants">Restaurants</a>
+                </div>
+            </div>
+
+            <div class="nav-dropdown">
+                <button class="dropdown-btn" type="button">People <i class="fa-solid fa-chevron-down"></i></button>
+                <div class="dropdown-menu">
+                    <a href="people.html">All People</a>
+                    <a href="people.html?category=leaders">Community Leaders</a>
+                    <a href="people.html?category=professionals">Professionals</a>
+                    <a href="people.html?category=business">Business People</a>
+                    <a href="people.html?category=creatives">Creatives</a>
+                    <a href="people.html?category=public-figures">Public Figures</a>
+                </div>
+            </div>
+
+            <a href="news.html">News</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<section class="people-page-hero">
+    <div class="container">
+        <span class="hero-small-title">THE PEOPLE OF AKUAPEM</span>
+        <h1>Meet Our People</h1>
+        <p>Discover the leaders, professionals, entrepreneurs and creatives who contribute to the life and development of Akuapem.</p>
+    </div>
+</section>
+
+<section class="people-section">
+    <div class="container">
+        <div class="section-heading">
+            <span>OUR COMMUNITY</span>
+            <h2>People Directory</h2>
+            <p>Explore profiles and learn more about the people making a difference in our communities.</p>
+        </div>
+
+        <div class="people-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="peopleSearch" placeholder="Search by name, role or location..." aria-label="Search people">
+        </div>
+
+        <div class="people-filters" aria-label="Filter people by category">
+            <button class="people-filter active" data-category="all" type="button">All People</button>
+            <button class="people-filter" data-category="leaders" type="button">Community Leaders</button>
+            <button class="people-filter" data-category="professionals" type="button">Professionals</button>
+            <button class="people-filter" data-category="business" type="button">Business People</button>
+            <button class="people-filter" data-category="creatives" type="button">Creatives</button>
+            <button class="people-filter" data-category="public-figures" type="button">Public Figures</button>
+        </div>
+
+        <div class="people-grid" id="peopleGrid">
+
+            <!-- Replace these sample entries with real names, biographies and photographs. -->
+
+            <article class="person-card" data-category="leaders">
+                <a class="person-photo" href="person-details.html?person=community-leader-1">
+                    <img src="images/leaderp.webp" alt="Community leader profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Community Leader</span>
+                    <h3>Community Leader Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Learn about a community leader's service, responsibilities and contribution to local development.</p>
+                    <a class="person-btn" href="person-details.html?person=community-leader-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="person-card" data-category="professionals">
+                <a class="person-photo" href="person-details.html?person=professional-1">
+                    <img src="images/pp.webp" alt="Professional profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Professional</span>
+                    <h3>Professional Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Discover the career, expertise and professional journey of a member of the community.</p>
+                    <a class="person-btn" href="person-details.html?person=professional-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="person-card" data-category="business">
+                <a class="person-photo" href="person-details.html?person=business-person-1">
+                    <img src="images/bp.jpg" alt="Business person profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Business Person</span>
+                    <h3>Business Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Explore the work, enterprise and business contributions of a local entrepreneur.</p>
+                    <a class="person-btn" href="person-details.html?person=business-person-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="person-card" data-category="creatives">
+                <a class="person-photo" href="person-details.html?person=creative-1">
+                    <img src="images/cp.jpeg" alt="Creative professional profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Creative</span>
+                    <h3>Creative Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Get to know a creative person's work, talents and contribution to local culture.</p>
+                    <a class="person-btn" href="person-details.html?person=creative-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="person-card" data-category="public-figures">
+                <a class="person-photo" href="person-details.html?person=public-figure-1">
+                    <img src="images/pfp.webp" alt="Public figure profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Public Figure</span>
+                    <h3>Public Figure Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Learn about a public figure's work, achievements and influence in the community.</p>
+                    <a class="person-btn" href="person-details.html?person=public-figure-1">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="person-card" data-category="leaders">
+                <a class="person-photo" href="person-details.html?person=community-leader-2">
+                    <img src="images/crp.jpeg" alt="Community representative profile" loading="lazy">
+                </a>
+                <div class="person-content">
+                    <span class="person-category">Community Leader</span>
+                    <h3>Community Profile</h3>
+                    <p class="person-location"><i class="fa-solid fa-location-dot"></i> Akuapem, Ghana</p>
+                    <p>Read about community service, leadership and initiatives that support local people.</p>
+                    <a class="person-btn" href="person-details.html?person=community-leader-2">View Profile <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+
+        <div class="no-people" id="noPeople" hidden>
+            <i class="fa-solid fa-users"></i>
+            <h3>No Profiles Found</h3>
+            <p>Try another name or category.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Paste the exact footer HTML from index.html here. -->
+
+<script src="script.js"></script>
+<script>
+(() => {
+    const search = document.getElementById("peopleSearch");
+    const cards = [...document.querySelectorAll(".person-card")];
+    const filters = [...document.querySelectorAll(".people-filter")];
+    const noPeople = document.getElementById("noPeople");
+
+    function applyFilters() {
+        const query = search.value.trim().toLowerCase();
+        const active = document.querySelector(".people-filter.active");
+        const category = active ? active.dataset.category : "all";
+        let visible = 0;
+
+        cards.forEach(card => {
+            const matchesCategory = category === "all" || card.dataset.category === category;
+            const matchesSearch = card.innerText.toLowerCase().includes(query);
+            const show = matchesCategory && matchesSearch;
+            card.hidden = !show;
+            if (show) visible++;
+        });
+
+        noPeople.hidden = visible !== 0;
+    }
+
+    filters.forEach(button => {
+        button.addEventListener("click", () => {
+            filters.forEach(item => item.classList.remove("active"));
+            button.classList.add("active");
+            applyFilters();
+        });
+    });
+
+    search.addEventListener("input", applyFilters);
+
+    const requestedCategory = new URLSearchParams(location.search).get("category");
+    const requestedFilter = filters.find(button => button.dataset.category === requestedCategory);
+    if (requestedFilter) {
+        filters.forEach(item => item.classList.remove("active"));
+        requestedFilter.classList.add("active");
+    }
+
+    applyFilters();
+})();
+</script>
+</body>
+</html>
