@@ -589,6 +589,50 @@ nav > a.active,
 }
 
 
+/* =========================================
+   FIX HOMEPAGE SEARCH BAR ON MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-search,
+    .search-box,
+    .search-container {
+        box-sizing: border-box;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .hero-search form,
+    .search-box form,
+    .search-container form {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .hero-search input,
+    .search-box input,
+    .search-container input,
+    input[type="search"] {
+        box-sizing: border-box;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .hero-search input,
+    .search-box input,
+    .search-container input {
+        flex: 1 1 0;
+        width: 100%;
+    }
+
+}
+
+
 /* ================= SECTION ================= */
 
 .categories-section,
