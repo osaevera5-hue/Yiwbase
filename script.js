@@ -1,7 +1,4 @@
- /* =====================================================
-   YIWBASE - MAIN JAVASCRIPT
-===================================================== */
-
+ 
 
 /* =====================================================
    MOBILE MENU
@@ -1488,35 +1485,7 @@ function quickSearch(value) {
     searchBusinesses();
 
 }
-
-
-/* =====================================================
-   HOME SEARCH ENTER KEY
-===================================================== */
-
-const homeSearch =
-    document.getElementById(
-        "homeSearch"
-    );
-
-
-if (homeSearch) {
-
-    homeSearch.addEventListener(
-        "keypress",
-        function (event) {
-
-            if (event.key === "Enter") {
-
-                searchBusinesses();
-
-            }
-
-        }
-    );
-
-}
-
+ 
 
 /* =====================================================
    AUTO LOAD CATEGORY PAGE
@@ -1545,132 +1514,13 @@ if (
 
 }
 
-
-/* =====================================================
-   HOME SEARCH ON DIRECTORY PAGE
-===================================================== */
-
-if (
-    window.location.pathname.includes(
-        "business.html"
-    )
-) {
-
-    const savedSearch =
-        localStorage.getItem(
-            "yiwbaseSearch"
-        );
-
-
-    if (
-        savedSearch &&
-        directorySearch
-    ) {
-
-        directorySearch.value =
-            savedSearch;
-
-
-        /* =============================================
-           RUN SAVED SEARCH
-        ============================================= */
-
-        const category =
-            new URLSearchParams(
-                window.location.search
-            ).get("category");
-
-
-        if (category) {
-
-            const data =
-                categories[category];
-
-
-            if (data) {
-
-                const search =
-                    savedSearch
-                        .toLowerCase()
-                        .trim();
-
-
-                const filtered =
-                    data.businesses.filter(
-                        function (business) {
-
-                            const name =
-                                (
-                                    business.name ||
-                                    ""
-                                ).toLowerCase();
-
-
-                            const type =
-                                (
-                                    business.type ||
-                                    ""
-                                ).toLowerCase();
-
-
-                            const location =
-                                (
-                                    business.location ||
-                                    ""
-                                ).toLowerCase();
-
-
-                            const description =
-                                (
-                                    business.description ||
-                                    ""
-                                ).toLowerCase();
-
-
-                            return (
-
-                                name.includes(search)
-
-                                ||
-
-                                type.includes(search)
-
-                                ||
-
-                                location.includes(search)
-
-                                ||
-
-                                description.includes(search)
-
-                            );
-
-                        }
-                    );
-
-
-                displayBusinesses(
-                    filtered
-                );
-
-
-                localStorage.removeItem(
-                    "yiwbaseSearch"
-                );
-
-            }
-
-        }
-
-    }
-
-}
-
+  
+ 
 /* =====================================================
    NAVIGATION DROPDOWNS
 ===================================================== */
 
-document.querySelectorAll(".dropdown-btn").forEach(button => {
+document.querySelectorAll(".dropdown-btn").forEach(function (button) {
 
     button.addEventListener("click", function (e) {
 
@@ -1679,33 +1529,48 @@ document.querySelectorAll(".dropdown-btn").forEach(button => {
 
         const dropdown = this.closest(".nav-dropdown");
 
-        /* Close other dropdowns */
-        document.querySelectorAll(".nav-dropdown").forEach(item => {
+        if (!dropdown) return;
 
-            if (item !== dropdown) {
-                item.classList.remove("open");
-            }
+        const isAlreadyOpen = dropdown.classList.contains("open");
 
+        // Close all dropdowns first
+        document.querySelectorAll(".nav-dropdown").forEach(function (item) {
+            item.classList.remove("open");
         });
 
-        /* Toggle current dropdown */
-        dropdown.classList.toggle("open");
+        // Open this dropdown only if it was previously closed
+        if (!isAlreadyOpen) {
+            dropdown.classList.add("open");
+        }
 
     });
 
 });
 
-
-/* Close dropdown when clicking outside */
+/* Close dropdowns when clicking outside the navigation dropdowns */
 
 document.addEventListener("click", function (e) {
 
     if (!e.target.closest(".nav-dropdown")) {
 
-        document.querySelectorAll(".nav-dropdown").forEach(dropdown => {
+        document.querySelectorAll(".nav-dropdown").forEach(function (dropdown) {
             dropdown.classList.remove("open");
         });
 
     }
+
+});
+
+/* Close dropdown after selecting a menu link */
+
+document.querySelectorAll(".dropdown-menu a").forEach(function (link) {
+
+    link.addEventListener("click", function () {
+
+        document.querySelectorAll(".nav-dropdown").forEach(function (dropdown) {
+            dropdown.classList.remove("open");
+        });
+
+    });
 
 });

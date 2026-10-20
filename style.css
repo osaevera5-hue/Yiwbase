@@ -320,97 +320,79 @@ nav > a.active,
 
 }
 
-
-/* =====================================================
-   MOBILE NAVIGATION
-===================================================== */
+ 
+/* =========================================
+   MOBILE NAVIGATION & DROPDOWNS
+========================================= */
 
 @media (max-width: 768px) {
 
-    /* NAV DROPDOWN */
-
-    .nav-dropdown {
+    #mainNav .nav-dropdown {
+        display: block;
+        position: relative;
         width: 100%;
     }
 
-
-    /* DROPDOWN BUTTON */
-
-    .dropdown-btn {
-        width: 100%;
-
+    #mainNav .nav-dropdown > .dropdown-btn {
+        display: flex;
+        align-items: center;
         justify-content: space-between;
-
-        padding: 14px 0;
-
-        color: inherit;
-    }
-
-
-    /* DROPDOWN MENU */
-
-    .dropdown-menu {
-        position: static;
-
         width: 100%;
-
-        padding: 0;
-
-        margin: 0;
-
-        transform: none;
-
-        background: transparent;
-
-        border-radius: 0;
-
-        box-shadow: none;
-
-        opacity: 1;
-        visibility: visible;
-
-        display: none;
+        padding: 14px 0;
+        color: inherit;
+        background: none;
+        border: none;
+        font: inherit;
+        cursor: pointer;
     }
 
-
-    /* REMOVE DESKTOP ARROW */
-
-    .dropdown-menu::before {
-        display: none;
+    /* CLOSED BY DEFAULT */
+    #mainNav .nav-dropdown > .dropdown-menu {
+        display: none !important;
+        position: static !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transform: none !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
+    /* OPEN WHEN BUTTON IS CLICKED */
+    #mainNav .nav-dropdown.open > .dropdown-menu {
+        display: block !important;
+    }
 
-    /* MOBILE LINKS */
+    #mainNav .dropdown-menu::before {
+        display: none !important;
+    }
 
-    .dropdown-menu a {
+    #mainNav .dropdown-menu a {
+        display: block;
         padding: 11px 15px 11px 25px;
-
         background: rgba(0, 0, 0, 0.03);
-
         border-left: 2px solid transparent;
     }
 
-
-    .dropdown-menu a:hover {
+    #mainNav .dropdown-menu a:hover {
         padding-left: 30px;
-
         background: rgba(0, 0, 0, 0.06);
     }
 
-
-    /* WHEN DROPDOWN IS OPEN */
-
-    .nav-dropdown.open .dropdown-menu {
-        display: block;
+    #mainNav .dropdown-btn i {
+        transition: transform 0.25s ease;
     }
 
-
-    /* ROTATE ARROW */
-
-    .nav-dropdown.open .dropdown-btn i {
+    #mainNav .nav-dropdown.open > .dropdown-btn i {
         transform: rotate(180deg);
     }
-
 }
 
 /* MOBILE BUTTON */
