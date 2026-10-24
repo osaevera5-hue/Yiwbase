@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sales & Marketplace | Yiwbase</title>
+
+    <meta name="description" content="Discover cars, houses, land, electronics, furniture, fashion and other items for sale across Akuapem on Yiwbase.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sales.css">
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            Yiw<span>base</span>
+        </a>
+
+        <button class="menu-btn" id="menuBtn"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="nav-menu" id="mainNav">
+            <a href="index.html">Home</a>
+            <a href="business.html">Businesses</a>
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a>
+            <a href="places.html">Places</a>
+            <a href="people.html">People</a>
+            <a href="sales.html" class="active">Sales</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =========================
+         MARKETPLACE HERO
+    ========================= -->
+    <section class="sales-hero">
+        <div class="sales-hero-content">
+
+            <span class="sales-eyebrow">
+                <i class="fa-solid fa-store"></i>
+                Yiwbase Marketplace
+            </span>
+
+            <h1>Discover Great Deals <span>Around Akuapem</span></h1>
+
+            <p>
+                Buy and sell cars, land, houses, phones, electronics,
+                furniture, fashion and more in one convenient place.
+            </p>
+
+            <a href="#marketplace" class="sales-hero-btn">
+                Explore Items
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CATEGORY SHORTCUTS
+    ========================= -->
+    <section class="sales-categories-section">
+
+        <div class="sales-section-heading">
+            <span>SHOP BY CATEGORY</span>
+            <h2>What Are You Looking For?</h2>
+            <p>Choose a category to discover available listings.</p>
+        </div>
+
+        <div class="sales-category-grid">
+
+            <button class="sales-category active" data-category="all">
+                <i class="fa-solid fa-border-all"></i>
+                <span>All Items</span>
+            </button>
+
+            <button class="sales-category" data-category="cars">
+                <i class="fa-solid fa-car"></i>
+                <span>Cars</span>
+            </button>
+
+            <button class="sales-category" data-category="houses">
+                <i class="fa-solid fa-house"></i>
+                <span>Houses</span>
+            </button>
+
+            <button class="sales-category" data-category="land">
+                <i class="fa-solid fa-mountain-sun"></i>
+                <span>Land</span>
+            </button>
+
+            <button class="sales-category" data-category="electronics">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Electronics</span>
+            </button>
+
+            <button class="sales-category" data-category="phones">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>Phones</span>
+            </button>
+
+            <button class="sales-category" data-category="furniture">
+                <i class="fa-solid fa-couch"></i>
+                <span>Furniture</span>
+            </button>
+
+            <button class="sales-category" data-category="fashion">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Fashion</span>
+            </button>
+
+            <button class="sales-category" data-category="other">
+                <i class="fa-solid fa-box-open"></i>
+                <span>Other Items</span>
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         MARKETPLACE LISTINGS
+    ========================= -->
+    <section class="sales-marketplace" id="marketplace">
+
+        <div class="sales-listing-heading">
+            <div>
+                <span class="sales-small-label">THE MARKETPLACE</span>
+                <h2>Items Available for Sale</h2>
+                <p>Search listings and find something you need.</p>
+            </div>
+
+            <a href="#sell-item" class="sales-sell-top-btn">
+                <i class="fa-solid fa-plus"></i>
+                Sell an Item
+            </a>
+        </div>
+
+
+        <!-- SEARCH AND FILTERS -->
+        <div class="sales-search-panel">
+
+            <div class="sales-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="salesSearch"
+                    placeholder="Search cars, phones, land, furniture..."
+                    aria-label="Search marketplace listings">
+            </div>
+
+            <div class="sales-filter-row">
+
+                <select id="salesLocation" aria-label="Filter by location">
+                    <option value="all">All Locations</option>
+                    <option value="akropong">Akropong</option>
+                    <option value="amanokrom">Amanokrom</option>
+                    <option value="aburi">Aburi</option>
+                    <option value="mamfe">Mamfe</option>
+                    <option value="nsawam">Nsawam</option>
+                    <option value="other">Other Locations</option>
+                </select>
+
+                <select id="salesSort" aria-label="Sort listings">
+                    <option value="newest">Newest First</option>
+                    <option value="low-high">Price: Low to High</option>
+                    <option value="high-low">Price: High to Low</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <!-- RESULTS COUNT -->
+        <div class="sales-results-bar">
+            <p id="salesResultsCount">Available listings</p>
+            <span>Browse before you buy</span>
+        </div>
+
+
+        <!-- LISTINGS ARE INSERTED BY sales.js -->
+        <div class="sales-listing-grid" id="salesListingGrid">
+
+            <div class="sales-loading">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <p>Loading marketplace listings...</p>
+            </div>
+
+        </div>
+
+        <div class="sales-no-results" id="salesNoResults" hidden>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <h3>No items found</h3>
+            <p>Try another search term or select a different category.</p>
+            <button type="button" id="salesReset">
+                Clear Filters
+            </button>
+        </div>
+
+        <p class="sales-demo-note">
+            <i class="fa-solid fa-circle-info"></i>
+            Listings shown on this page are sample listings until real seller
+            details and items are added.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         SELL AN ITEM
+    ========================= -->
+    <section class="sales-sell-section" id="sell-item">
+
+        <div class="sales-sell-content">
+
+            <div class="sales-sell-icon">
+                <i class="fa-solid fa-store"></i>
+            </div>
+
+            <span class="sales-small-label">JOIN THE MARKETPLACE</span>
+
+            <h2>Have Something to Sell?</h2>
+
+            <p>
+                Let people around Akuapem discover your items.
+                Prepare your listing details and submit them for review.
+            </p>
+
+            <a href="add-business.html" class="sales-sell-secondary">
+                Explore Yiwbase Business Listings
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <p class="sales-review-note">
+                Marketplace listings will need a working submission and
+                review process before they can be published automatically.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-about">
+            <a href="index.html" class="logo">
+                Yiw<span>base</span>
+            </a>
+
+            <p>
+                Discover businesses, people, places, events and opportunities
+                across Akuapem with Yiwbase.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Explore</h3>
+            <a href="index.html">Home</a>
+            <a href="business.html">Businesses</a>
+            <a href="news.html">News</a>
+            <a href="events.html">Events</a>
+            <a href="places.html">Places</a>
+            <a href="people.html">People</a>
+            <a href="sales.html">Sales & Marketplace</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Marketplace</h3>
+            <a href="#marketplace">Browse Items</a>
+            <a href="#sell-item">Sell an Item</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            &copy; <span id="salesYear"></span> Yiwbase.
+            All rights reserved.
+        </p>
+    </div>
+</footer>
+
+
+<!-- IMAGE LIGHTBOX -->
+<div class="sales-lightbox" id="salesLightbox" aria-hidden="true">
+
+    <button
+        type="button"
+        class="sales-lightbox-close"
+        id="salesLightboxClose"
+        aria-label="Close enlarged image">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <button
+        type="button"
+        class="sales-lightbox-prev"
+        id="salesLightboxPrev"
+        aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <img
+        src=""
+        alt="Enlarged marketplace item"
+        id="salesLightboxImage">
+
+    <button
+        type="button"
+        class="sales-lightbox-next"
+        id="salesLightboxNext"
+        aria-label="Next image">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <p id="salesLightboxCaption"></p>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="sales.js"></script>
+
+</body>
+</html>
